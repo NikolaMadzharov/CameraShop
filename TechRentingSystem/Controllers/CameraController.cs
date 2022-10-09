@@ -3,6 +3,7 @@
 namespace TechRentingSystem.Controllers
 {
     using TechRentingSystem.Data;
+    using TechRentingSystem.Data.Models;
     using TechRentingSystem.Models.Cameras;
 
     public class CameraController : Controller
@@ -20,8 +21,27 @@ namespace TechRentingSystem.Controllers
         [HttpPost]
         public IActionResult Add(AddCameraFromModel camera)
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    camera.Categories = this.GetCameraCategories();
 
-            return this.View();
+            //    return this.View(camera);
+            //}
+
+            var cameraData = new Camera
+                                 {
+                                     Brand = camera.Brand,
+                                     Model = camera.Model,
+                                     Description = camera.Description,
+                                     ImageUrl = camera.ImageUrl,
+                                     Year = camera.Year,
+                                     Price = camera.Price,
+                                     CategoryId = camera.CategoryId
+                                 };
+            this.data.Add(cameraData);
+            this.data.SaveChanges();
+
+            return this.RedirectToAction("Index", "Home");
         }
 
         private IEnumerable<CameraCategoryViewModel> GetCameraCategories() =>

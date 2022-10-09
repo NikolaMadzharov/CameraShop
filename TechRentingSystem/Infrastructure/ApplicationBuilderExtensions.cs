@@ -27,10 +27,10 @@
             }
             data.Categories.AddRange(new[]
                                                  {
-                                                     new Category{Name = "Canon"},
-                                                     new Category{Name = "Nikon"},
-                                                     new Category{Name = "Sony"},
-                                                     new Category{Name = "Panasonic"},
+                                                     new Category{Name = "Compact Cameras"},
+                                                     new Category{Name = "DSLR Cameras"},
+                                                     new Category{Name = "360 Cameras"},
+                                                     new Category{Name = "Action (Adventure) Cameras"},
                                                  });
 
             data.SaveChanges();

@@ -8,10 +8,10 @@ using TechRentingSystem.Data;
 
 #nullable disable
 
-namespace TechRentingSystem.Data.Migrations
+namespace TechRentingSystem.Migrations
 {
     [DbContext(typeof(TechRentingDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    partial class TechRentingDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -232,6 +232,10 @@ namespace TechRentingSystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -252,10 +256,6 @@ namespace TechRentingSystem.Data.Migrations
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
-
-                    b.Property<string>("Brand")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
