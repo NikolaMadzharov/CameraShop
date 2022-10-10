@@ -1,0 +1,28 @@
+﻿@model TechRentingSystem.Models.Cameras.AllCameraQueryModel
+
+
+<form method="get">
+    <div class="row mb-5">
+        <div class="form-group col-md-4">
+            <label asp-for="searchTerm"></label>
+            <input asp-for="searchTerm" class="form-control" placeholder="Canon,Nikon...">
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary d-none"/>
+</form>
+
+
+
+<div class="row">
+    @foreach (var camera in Model.Cameras)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@camera.ImageUrl" class="card-img-top" alt="@camera.Brand - @camera.Year (@camera.Brand)">
+            <div class="card-body">
+                <h5 class="card-title">@camera.Brand (@camera.Year)</h5>
+                <h5 class="card-title">@camera.Price BGN</h5>
+                <a asp-controller="Camera" asp-action="Details" asp-route-id="@camera.Id" class="btn btn-primary">More details</a>
+            </div>
+        </div>
+    }
+</div>

@@ -5,6 +5,7 @@ namespace TechRentingSystem.Controllers
     using TechRentingSystem.Data;
     using TechRentingSystem.Data.Models;
     using TechRentingSystem.Models.Cameras;
+    using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
     public class CameraController : Controller
     {
@@ -17,6 +18,38 @@ namespace TechRentingSystem.Controllers
                                                     {
                                                         Categories = this.GetCameraCategories()
                                                     });
+
+
+        public IActionResult All(string searchTerm)
+        {
+            var camerasQuery = this.data.Cameras.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                camerasQuery = camerasQuery.Where(c =>
+                    (c.Brand + " " + c.Model).ToLower().Contains(searchTerm.ToLower()) ||
+                    c.Description.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+
+            var cameras = camerasQuery.Select(
+                x => new CameraListiningViewModel
+                         {
+                             Id = x.Id,
+                             Brand = x.Brand,
+                             Model = x.Model,
+                             Year = x.Year,
+                             ImageUrl = x.ImageUrl,
+                             Price = x.Price,
+                             Category = x.Category.Name
+                         }).ToList();
+
+            return View(new AllCameraQueryModel
+                                 {
+                                     Cameras = cameras,
+                                     searchTerm = searchTerm
+                                 });
+        }
 
         [HttpPost]
         public IActionResult Add(AddCameraFromModel camera)
@@ -41,7 +74,7 @@ namespace TechRentingSystem.Controllers
             this.data.Add(cameraData);
             this.data.SaveChanges();
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction(nameof(this.All));
         }
 
         private IEnumerable<CameraCategoryViewModel> GetCameraCategories() =>
