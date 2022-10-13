@@ -6,7 +6,11 @@
 
     public class AllCameraQueryModel
     {
+
+        public string Brand { get; set; }
+
         public IEnumerable<string> Brands { get; set; }
+
         [Display(Name = "Search")]
         public string searchTerm { get; set; }
 

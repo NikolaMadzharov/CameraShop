@@ -20,9 +20,14 @@ namespace TechRentingSystem.Controllers
                                                     });
 
 
-        public IActionResult All(string searchTerm)
+        public IActionResult All(string brand,string searchTerm)
         {
             var camerasQuery = this.data.Cameras.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(brand))
+            {
+                camerasQuery = camerasQuery.Where(x => x.Brand == brand);
+            }
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
@@ -30,6 +35,8 @@ namespace TechRentingSystem.Controllers
                     (c.Brand + " " + c.Model).ToLower().Contains(searchTerm.ToLower()) ||
                     c.Description.ToLower().Contains(searchTerm.ToLower()));
             }
+
+           
 
 
             var cameras = camerasQuery.Select(
@@ -42,10 +49,18 @@ namespace TechRentingSystem.Controllers
                              ImageUrl = x.ImageUrl,
                              Price = x.Price,
                              Category = x.Category.Name
-                         }).ToList();
+                         })
+                .ToList();
+
+
+            var cameraBrands = this.data
+                .Cameras.Select(x => x.Brand)
+                .Distinct()
+                .ToList();
 
             return View(new AllCameraQueryModel
                                  {
+                                     Brands = cameraBrands,
                                      Cameras = cameras,
                                      searchTerm = searchTerm
                                  });
