@@ -5,6 +5,8 @@ namespace TechRentingSystem.Controllers
     using TechRentingSystem.Data;
     using TechRentingSystem.Data.Models;
     using TechRentingSystem.Models.Cameras;
+    using TechRentingSystem.Models.Enum;
+
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
     public class CameraController : Controller
@@ -20,26 +22,36 @@ namespace TechRentingSystem.Controllers
                                                     });
 
 
-        public IActionResult All(string brand,string searchTerm)
+        public IActionResult All([FromQuery]AllCameraQueryModel query)
         {
             var camerasQuery = this.data.Cameras.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(brand))
+            if (!string.IsNullOrWhiteSpace(query.Brand))
             {
-                camerasQuery = camerasQuery.Where(x => x.Brand == brand);
+                camerasQuery = camerasQuery.Where(x => x.Brand == query.Brand);
             }
 
-            if (!string.IsNullOrWhiteSpace(searchTerm))
+            if (!string.IsNullOrWhiteSpace(query.searchTerm))
             {
                 camerasQuery = camerasQuery.Where(c =>
-                    (c.Brand + " " + c.Model).ToLower().Contains(searchTerm.ToLower()) ||
-                    c.Description.ToLower().Contains(searchTerm.ToLower()));
+                    (c.Brand + " " + c.Model).ToLower().Contains(query.searchTerm.ToLower()) ||
+                    c.Description.ToLower().Contains(query.searchTerm.ToLower()));
             }
 
-           
+            camerasQuery = query.Sorting switch
+                {
+                    CameraSorting.Year => camerasQuery.OrderByDescending(c => c.Year),
+                    CameraSorting.BrandAndModel => camerasQuery.OrderBy(c => c.Brand).ThenBy(c => c.Model)
+                };
+
+            var totalCameras = camerasQuery.Count();
 
 
-            var cameras = camerasQuery.Select(
+            var cameras = camerasQuery
+                .Skip((query.CurrentPage-1) * AllCameraQueryModel.CameraPerPage)
+                .Take(AllCameraQueryModel.CameraPerPage)
+                .Select
+                (
                 x => new CameraListiningViewModel
                          {
                              Id = x.Id,
@@ -58,12 +70,11 @@ namespace TechRentingSystem.Controllers
                 .Distinct()
                 .ToList();
 
-            return View(new AllCameraQueryModel
-                                 {
-                                     Brands = cameraBrands,
-                                     Cameras = cameras,
-                                     searchTerm = searchTerm
-                                 });
+            query.Brands = cameraBrands;
+            query.Cameras = cameras;
+            query.TotalCameras = totalCameras;
+
+            return View(query);
         }
 
         [HttpPost]

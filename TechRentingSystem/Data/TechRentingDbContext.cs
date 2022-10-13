@@ -16,6 +16,8 @@ namespace TechRentingSystem.Data
 
         public DbSet<Category> Categories { get; init; }
 
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
