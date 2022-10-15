@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TechRentingSystem.Data;
+using TechRentingSystem.Data.Models.Account;
 using TechRentingSystem.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,14 @@ builder.Services.AddDbContext<TechRentingDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(
+        options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 6;
+                options.User.RequireUniqueEmail = true;
+            })
     .AddEntityFrameworkStores<TechRentingDbContext>();
 builder.Services.AddControllersWithViews();
 

@@ -2,13 +2,15 @@
 
 namespace TechRentingSystem.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+
     using TechRentingSystem.Data;
     using TechRentingSystem.Data.Models;
     using TechRentingSystem.Models.Cameras;
     using TechRentingSystem.Models.Enum;
 
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-
+    
     public class CameraController : Controller
     {
         private readonly TechRentingDbContext data;

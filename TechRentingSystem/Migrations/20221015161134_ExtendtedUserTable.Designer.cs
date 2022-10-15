@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechRentingSystem.Data;
 
@@ -11,9 +12,10 @@ using TechRentingSystem.Data;
 namespace TechRentingSystem.Migrations
 {
     [DbContext(typeof(TechRentingDbContext))]
-    partial class TechRentingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221015161134_ExtendtedUserTable")]
+    partial class ExtendtedUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
