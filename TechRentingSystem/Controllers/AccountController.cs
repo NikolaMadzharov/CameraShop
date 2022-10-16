@@ -39,7 +39,7 @@ namespace TechRentingSystem.Controllers
             var user = new ApplicationUser
                            {
                                Email = model.Emal,
-                               FirstName = model.FIrstName,
+                               FirstName = model.FirstName,
                                EmailConfirmed = true,
                                LastName = model.LastName,
                                UserName = model.Emal
@@ -54,18 +54,57 @@ namespace TechRentingSystem.Controllers
                 return this.RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError(null, "Something went wrong");
+            foreach (var itemError in result.Errors)
+            {
+                ModelState.AddModelError("",itemError.Description);
+            }
 
             return View(model);
         }
-        public async Task<IActionResult> Login(string? url = null)
+
+        [HttpGet]
+        public IActionResult Login(string? returnUrl = null)
         {
-            return this.Ok();
+            var model = new LoginViewModel { ReturnUrl = returnUrl };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await userManager.FindByEmailAsync(model.Emal);
+
+            if (user != null)
+            {
+                var result = await this.signInManager.PasswordSignInAsync(user, model.Password, false, false);
+
+                if (result.Succeeded)
+                {
+
+                    if (model.ReturnUrl != null)
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(model);
+
         }
 
         public async Task<IActionResult> Logout(string? url = null)
         {
-            return this.Ok();
+            await signInManager.SignOutAsync();
+
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

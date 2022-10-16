@@ -9,11 +9,13 @@
         public string Emal { get; set; }
         [Required]
         [Compare(nameof(PasswordConfirmation))]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required]
+        [DataType(DataType.Password)]
         public string PasswordConfirmation { get; set; }
         [Required]
-        public string FIrstName { get; set; }
+        public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
     }
