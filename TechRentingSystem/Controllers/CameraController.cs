@@ -11,7 +11,7 @@ namespace TechRentingSystem.Controllers
 
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
     
-    public class CameraController : Controller
+    public class CameraController : BaseController
     {
         private readonly TechRentingDbContext data;
 
@@ -23,7 +23,7 @@ namespace TechRentingSystem.Controllers
                                                         Categories = this.GetCameraCategories()
                                                     });
 
-
+        [AllowAnonymous]
         public IActionResult All([FromQuery]AllCameraQueryModel query)
         {
             var camerasQuery = this.data.Cameras.AsQueryable();

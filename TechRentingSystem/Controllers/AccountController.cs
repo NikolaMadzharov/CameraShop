@@ -2,12 +2,13 @@
 
 namespace TechRentingSystem.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
 
     using TechRentingSystem.Data.Models.Account;
     using TechRentingSystem.Models.Account;
 
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 
         private readonly UserManager<ApplicationUser> userManager;
@@ -21,6 +22,7 @@ namespace TechRentingSystem.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Register()
         {
             var model = new RegisterViewModel();
@@ -29,6 +31,7 @@ namespace TechRentingSystem.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
@@ -46,6 +49,7 @@ namespace TechRentingSystem.Controllers
                            };
 
             var result = await this.userManager.CreateAsync(user, model.Password);
+            await this.userManager.AddClaimAsync(user, new System.Security.Claims.Claim("first_name", user.FirstName));
 
             if (result.Succeeded)
             {
@@ -63,6 +67,7 @@ namespace TechRentingSystem.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login(string? returnUrl = null)
         {
             var model = new LoginViewModel { ReturnUrl = returnUrl };
@@ -71,6 +76,7 @@ namespace TechRentingSystem.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)

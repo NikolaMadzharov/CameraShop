@@ -4,23 +4,40 @@ using TechRentingSystem.Models;
 
 namespace TechRentingSystem.Controllers
 {
+    using TechRentingSystem.Data;
+    using TechRentingSystem.Models.Cameras;
+    using TechRentingSystem.Models.Home;
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        private readonly TechRentingDbContext data;
+
+        public HomeController(TechRentingDbContext data)
+            => this.data = data;
 
         public IActionResult Index()
         {
-            return View();
-        }
+          
 
-        public IActionResult Privacy()
-        {
-            return View();
+            var cameras = this.data
+                .Cameras
+                .OrderByDescending(c => c.Id)
+                .Select(c => new CameraIndexViewModel
+                                 {
+                                     Id = c.Id,
+                                     Brand = c.Brand,
+                                     Model = c.Model,
+                                     Year = c.Year,
+                                     ImageUrl = c.ImageUrl
+                                 })
+                .Take(3)
+                .ToList();
+
+            return View(new IndexViewModel()
+                            {
+                               Cameras = cameras
+                            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
