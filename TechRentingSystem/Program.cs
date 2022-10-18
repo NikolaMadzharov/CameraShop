@@ -20,8 +20,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(
                 options.Password.RequiredLength = 6;
                 options.User.RequireUniqueEmail = true;
             })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<TechRentingDbContext>();
 builder.Services.AddControllersWithViews();
+
+
 
 builder.Services.ConfigureApplicationCookie(options =>
     {

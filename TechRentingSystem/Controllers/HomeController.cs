@@ -4,7 +4,10 @@ using TechRentingSystem.Models;
 
 namespace TechRentingSystem.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
     using TechRentingSystem.Data;
+    using TechRentingSystem.Data.Models.Account;
+    using TechRentingSystem.Infrastructure;
     using TechRentingSystem.Models.Cameras;
     using TechRentingSystem.Models.Home;
 
@@ -13,8 +16,14 @@ namespace TechRentingSystem.Controllers
 
         private readonly TechRentingDbContext data;
 
+
         public HomeController(TechRentingDbContext data)
-            => this.data = data;
+        {
+           
+            this.data = data;
+
+        }
+
 
         public IActionResult Index()
         {
@@ -37,8 +46,11 @@ namespace TechRentingSystem.Controllers
             return View(new IndexViewModel()
                             {
                                Cameras = cameras
-                            });
+            });
         }
+
+       
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

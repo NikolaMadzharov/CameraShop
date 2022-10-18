@@ -6,19 +6,21 @@ namespace TechRentingSystem.Controllers
     using Microsoft.AspNetCore.Identity;
 
     using TechRentingSystem.Data.Models.Account;
+    using TechRentingSystem.Infrastructure;
     using TechRentingSystem.Models.Account;
 
     public class AccountController : BaseController
     {
 
         private readonly UserManager<ApplicationUser> userManager;
-
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager)
+        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> _roleManager)
         {
-            userManager =_userManager;
+            userManager = _userManager;
             signInManager = _signInManager;
+            roleManager = _roleManager;
         }
 
         [HttpGet]
@@ -112,5 +114,8 @@ namespace TechRentingSystem.Controllers
 
             return this.RedirectToAction("Index", "Home");
         }
+
+        
+      
     }
 }
