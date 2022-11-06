@@ -51,7 +51,8 @@ namespace TechRentingSystem.Controllers
                            };
 
             var result = await this.userManager.CreateAsync(user, model.Password);
-            await this.userManager.AddClaimAsync(user, new System.Security.Claims.Claim("first_name", user.FirstName));
+
+            await userManager.AddClaimAsync(user, new System.Security.Claims.Claim("first_name", user.FirstName));
 
             if (result.Succeeded)
             {
@@ -115,7 +116,9 @@ namespace TechRentingSystem.Controllers
             return this.RedirectToAction("Index", "Home");
         }
 
-        
-      
+
+
+
+
     }
 }

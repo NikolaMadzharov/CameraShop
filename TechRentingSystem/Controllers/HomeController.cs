@@ -4,11 +4,7 @@ using TechRentingSystem.Models;
 
 namespace TechRentingSystem.Controllers
 {
-    using Microsoft.AspNetCore.Identity;
     using TechRentingSystem.Data;
-    using TechRentingSystem.Data.Models.Account;
-    using TechRentingSystem.Infrastructure;
-    using TechRentingSystem.Models.Cameras;
     using TechRentingSystem.Models.Home;
 
     public class HomeController : Controller
@@ -48,9 +44,7 @@ namespace TechRentingSystem.Controllers
                                Cameras = cameras
             });
         }
-
-       
-
+      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
