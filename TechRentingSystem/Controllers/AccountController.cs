@@ -4,7 +4,8 @@ namespace TechRentingSystem.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
-
+    using System.Security.Claims;
+    using TechRentingSystem.Contracts;
     using TechRentingSystem.Data.Models.Account;
     using TechRentingSystem.Infrastructure;
     using TechRentingSystem.Models.Account;
@@ -15,12 +16,14 @@ namespace TechRentingSystem.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IUserService userService;
 
-        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> _roleManager)
+        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> _roleManager, IUserService _userService)
         {
             userManager = _userManager;
             signInManager = _signInManager;
             roleManager = _roleManager;
+            userService = _userService;
         }
 
         [HttpGet]
@@ -116,8 +119,64 @@ namespace TechRentingSystem.Controllers
             return this.RedirectToAction("Index", "Home");
         }
 
+        public async Task<IActionResult> CreateRoles()
+        {
+        
+            await roleManager.CreateAsync(new IdentityRole(RoleConstants.Seller));
+            await roleManager.CreateAsync(new IdentityRole(RoleConstants.Admin));
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> AddUsersToRoles()
+        {
+
+            string email = "kolio2@abv.bg";
+            
 
 
+            var user4 = await userManager.FindByNameAsync(email);
+
+
+            await userManager.AddToRolesAsync(user4, new string[] { RoleConstants.Admin });
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> MyProfile()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var model = await this.userService.GetUserProfile(userId);
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> Edit()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var model = await this.userService.GetUserForEdit(userId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserEditViewModel model)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            model.Id = userId;
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await this.userService.UpdateUser(model);
+
+            return RedirectToAction("MyProfile", "Account");
+        }
 
 
     }

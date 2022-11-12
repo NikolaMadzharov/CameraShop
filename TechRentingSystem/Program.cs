@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TechRentingSystem.Contracts;
+using TechRentingSystem.Controllers;
 using TechRentingSystem.Data;
 using TechRentingSystem.Data.Models.Account;
 using TechRentingSystem.Infrastructure;
+using TechRentingSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +27,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(
     .AddEntityFrameworkStores<TechRentingDbContext>();
 builder.Services.AddControllersWithViews();
 
-
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.ConfigureApplicationCookie(options =>
     {
@@ -54,6 +57,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
 
 app.MapControllerRoute(
     name: "default",
