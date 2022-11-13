@@ -168,10 +168,7 @@ namespace TechRentingSystem.Controllers
 
             model.Id = userId;
 
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+          
 
             await this.userService.UpdateUser(model);
 

@@ -77,9 +77,7 @@
                 <h5 class="card-title mt-1">@camera.Brand (@camera.Model)</h5>
                 <h5 class="card-title mt-1">@camera.Price lv.</h5>
             </div>
-            <form class="input-group-sm" asp-controller="Books" asp-action="Details" asp-route-bookId="@camera.Id">
-                <input type="submit" value="Add to Collection" class="fs-6 btn btn-success mb-3 p-2" />
-            </form>
+            <a asp-controller="Camera" asp-action="Details" asp-route-id="@camera.Id" class="btn btn-success">Details</a>
         </div>
     }
 </div>

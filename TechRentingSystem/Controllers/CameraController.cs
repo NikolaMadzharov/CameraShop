@@ -3,7 +3,7 @@
 namespace TechRentingSystem.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
-
+    using TechRentingSystem.Contracts;
     using TechRentingSystem.Data;
     using TechRentingSystem.Data.Models;
     using TechRentingSystem.Models.Cameras;
@@ -14,8 +14,13 @@ namespace TechRentingSystem.Controllers
     public class CameraController : BaseController
     {
         private readonly TechRentingDbContext data;
+        private readonly IProductDetails productDetails;
 
-        public CameraController(TechRentingDbContext data) => this.data = data;
+        public CameraController(TechRentingDbContext data, IProductDetails productDetails)
+        {
+           this.data = data;
+            this.productDetails = productDetails;
+        }
 
 
         public IActionResult Add() => this.View(new AddCameraFromModel
@@ -107,6 +112,14 @@ namespace TechRentingSystem.Controllers
 
         private IEnumerable<CameraCategoryViewModel> GetCameraCategories() =>
             this.data.Categories.Select(x => new CameraCategoryViewModel { Id = x.Id, Name = x.Name, }).ToList();
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var data = await productDetails.GetProductDetails(id);
+
+            return this.View(data);
+        }
     }
 }
 
