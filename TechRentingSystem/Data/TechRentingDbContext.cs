@@ -17,6 +17,7 @@ namespace TechRentingSystem.Data
 
         public DbSet<Category> Categories { get; init; }
 
+        public DbSet<ShoppingCart> ShoppingCarts { get; init; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

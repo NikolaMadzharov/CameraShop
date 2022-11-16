@@ -26,6 +26,7 @@ namespace TechRentingSystem.Services
                 Price = product.Price,
                 Description = product.Description,
                 ImageUrl = product.ImageUrl,
+                Count = 1
             };
         
 

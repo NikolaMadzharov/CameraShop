@@ -69,15 +69,29 @@
 <div class="row">
     @foreach (var camera in Model.Cameras)
     {
-        <div class="card col-4" style="width: 20rem; ">
-            <img class="card-img-top" style="width: 18rem;"
-             src="@camera.ImageUrl" alt="Camera Image">
-            <div class="card-body">
-
-                <h5 class="card-title mt-1">@camera.Brand (@camera.Model)</h5>
-                <h5 class="card-title mt-1">@camera.Price lv.</h5>
+      
+            <div class="col-lg-4 col-md-7">
+                <div class="row p-2">
+                    <div class="col-12  p-1" style="border:1px solid #008cba; border-radius: 5px;">
+                        <div class="card" style="border:0px;">
+                            <img src="@camera.ImageUrl" class="card-img-top rounded" />
+                            <div class="pl-1">
+                                <p class="card-title h5"><b style="color:#2c3e50">@camera.Brand</b></p>
+                           @*     <p class="card-title text-primary">by <b>@camera.Author</b></p>*@
+                            </div>
+                            <div style="padding-left:5px;">
+                                <p>Old Price: <strike><b class="">@camera.Price lv</b></strike></p>
+                            </div>
+                            <div style="padding-left:5px;">
+                                <p style="color:maroon">As low as: <b class="">$@camera.Price.ToString("0.00")</b></p>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Details" class="btn btn-primary form-control" asp-route-id="@camera.Id">Details</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a asp-controller="Camera" asp-action="Details" asp-route-id="@camera.Id" class="btn btn-success">Details</a>
-        </div>
+       
     }
 </div>
