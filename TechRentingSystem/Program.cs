@@ -5,6 +5,8 @@ using TechRentingSystem.Controllers;
 using TechRentingSystem.Data;
 using TechRentingSystem.Data.Models.Account;
 using TechRentingSystem.Infrastructure;
+using TechRentingSystem.Repository;
+using TechRentingSystem.Repository.IRepository;
 using TechRentingSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,9 +29,9 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(
     .AddEntityFrameworkStores<TechRentingDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IUserService, UserService>();
 
-builder.Services.AddScoped<IProductDetails, ProductService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 builder.Services.ConfigureApplicationCookie(options =>
     {
