@@ -1,0 +1,45 @@
+﻿@model TechRentingSystem.Models.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@*<link href="/css/Login.css" rel="stylesheet" id="bootstrap-css">*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-body">
+                    <form id="loginForm" method="post">
+                        <div class="form-floating">
+                            <input asp-for="Emal" class="form-control" autocomplete="new-password" aria-required="true" />
+                            <label asp-for="Emal"></label>
+                            <span asp-validation-for="Emal" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating">
+                            <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                            <label asp-for="Password"></label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
