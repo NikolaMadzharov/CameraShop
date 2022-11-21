@@ -85,7 +85,7 @@ Maybe you can mention me or this repo in the acknowledgements too
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" />
+  <img src="https://prnt.sc/WWYoRX0EcUIA" alt="screenshot" />
 </div>
 
 
