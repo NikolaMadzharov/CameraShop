@@ -4,63 +4,55 @@
 
 <div class="row">
     <div class="col-12">
+        <form method="post">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">@ViewData["Title"]</h3>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
+         </div>
 
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Category</th>
-                            <th>Actions</th>
+                            <th>Brand</th>
+                            <th>Model</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var category in Model)
+                        @foreach (var camera in Model)
                         {
-                            <tr style="background-color: #add8e6">
-                                <td>@category.Id</td>
-                                <td>@category.Brand</td>
-                                <td>@category.Model</td>
-                                <td>
-                                    <a asp-area="Admin" asp-action="AddSubCategory" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-block btn-outline-info btn-xs">Add Sub Category</a>
-                                    <a asp-area="Admin" asp-action="Edit" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
-                                    <form asp-area="Admin" asp-action="Delete" asp-controller="Category" method="post">
-                                        <input name="id" type="hidden" value="@category.Id" />
-                                        <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            
+                                <tr style="background-color: #14a4c4">
+                                    <td>@camera.Id</td>
+                                    <td>@camera.Brand</td>
+                                    <td>@camera.Model</td>
+                                    <td>
+                                        <form asp-area="Admin" asp-action="Delete" asp-controller="Camera">
+                                            <input name="id" type="hidden" value="@camera.Id" />
+                                            <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+
                         }
                     </tbody>
                 </table>
             </div>
-
-        </div>
-
+        </form>
     </div>
 </div>
+<a asp-area="Admin" asp-action="Add" asp-controller="Camera"  class="btn btn-block btn-outline-info btn-xs">Add</a>
 
 
 
 
-<a asp-controller="Camera" asp-action="Add">
-    <input type="button" class="btn btn-primary" value="Add" />
-</a>
+
+
 
 <script>
 

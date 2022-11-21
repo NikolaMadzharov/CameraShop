@@ -16,5 +16,14 @@ namespace TechRentingSystem.Models.Account
         [StringLength(50, MinimumLength = 2)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 9)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+
+
+
     }
 }

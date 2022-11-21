@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 using TechRentingSystem.Contracts;
 using TechRentingSystem.Data.Models.Account;
 using TechRentingSystem.Models.Account;
@@ -63,6 +64,29 @@ namespace TechRentingSystem.Areas.Admin.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var model = await this.userService.GetUserForEdit(userId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserEditViewModel model)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            model.Id = userId;
+
+
+
+            await this.userService.UpdateUser(model);
+
+            return RedirectToAction("Index", "User");
         }
 
     }

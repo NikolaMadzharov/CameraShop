@@ -28,14 +28,15 @@
                 <a class="nav-link active" asp-controller="Account" asp-action="MyProfile">MyProfile</a>
                 @if (User.IsInRole(RoleConstants.Admin))
                 {
-                    <a class="nav-link active" asp-area="Admin" asp-controller="User" asp-action="Index" class="btn btn-danger">Dashboard</a>
+                    <a class="nav-link active" asp-area="Admin" asp-controller="User" asp-action="Index" class="btn btn-danger">User Management</a>
+                    <a class="nav-link active" asp-area="Admin" asp-controller="Camera" asp-action="Index" class="btn btn-danger">Camera Management</a>
+
                 }
 
             </div>
         </li>
 
-
-       
+        
 
     }
     else

@@ -41,9 +41,12 @@ namespace TechRentingSystem.Services
             {
                 Id = user.Id,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                Email = user.Email
+               
             };
         }
+
 
         public async Task<IEnumerable<UserListViewModel>> GetUsers()
         {

@@ -57,7 +57,15 @@ namespace TechRentingSystem.Areas.Admin.Controllers
 
             return this.RedirectToAction(nameof(Index));
         }
-       
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var camera = _data.Cameras.FirstOrDefault(x => x.Id == id);
+            
+            _data.Remove(camera);
+            _data.SaveChanges();
+            return this.RedirectToAction(nameof(Index));
+        }
 
      
 
