@@ -4,66 +4,45 @@ using TechRentingSystem.Data;
 using TechRentingSystem.Data.Models;
 using TechRentingSystem.Models.Cameras;
 using TechRentingSystem.Models.Home;
+using TechRentingSystem.Repository.IRepository;
 
 namespace TechRentingSystem.Areas.Admin.Controllers
 {
     public class CameraController : BaseController
     {
-        private readonly TechRentingDbContext _data;
+   
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CameraController(TechRentingDbContext data)
+        public CameraController(IUnitOfWork unitOfWork)
         {
-            _data = data;
+            _unitOfWork = unitOfWork;
         }
-        public  IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var allCameras =  this._data.Cameras
-                .Select(x => new CameraIndexViewModel
-                {
-                    Id = x.Id,
-                    Brand = x.Brand,
-                    Model = x.Model,
-                    ImageUrl = x.ImageUrl,
-                    Year = x.Year
-                }).ToList();
-
+            var allCameras = await this._unitOfWork.Product.GetCamerasAsync();
+           
             return View(allCameras);
         }
-        public IActionResult Add() => this.View(new AddCameraFromModel
+        public async Task<IActionResult> Add() => this.View(new AddCameraFromModel
         {
-            Categories = this.GetCameraCategories()
+            Categories = await this._unitOfWork.Product.GetCameraCategories()
         });
 
-        private IEnumerable<CameraCategoryViewModel> GetCameraCategories() =>
-       this._data.Categories.Select(x => new CameraCategoryViewModel { Id = x.Id, Name = x.Name, }).ToList();
+     
 
         [HttpPost]
-        public IActionResult Add(AddCameraFromModel camera)
+        public async Task<IActionResult> Add(AddCameraFromModel camera)
         {
-           
 
-            var cameraData = new Camera
-            {
-                Brand = camera.Brand,
-                Model = camera.Model,
-                Description = camera.Description,
-                ImageUrl = camera.ImageUrl,
-                Year = camera.Year,
-                Price = camera.Price,
-                CategoryId = camera.CategoryId
-            };
-            this._data.Add(cameraData);
-            this._data.SaveChanges();
+            await this._unitOfWork.Product.Add(camera);
 
             return this.RedirectToAction(nameof(Index));
         }
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var camera = _data.Cameras.FirstOrDefault(x => x.Id == id);
-            
-            _data.Remove(camera);
-            _data.SaveChanges();
+            await this._unitOfWork.Product.Delete(id);
+
             return this.RedirectToAction(nameof(Index));
         }
 
