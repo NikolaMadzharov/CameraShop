@@ -18,6 +18,7 @@ namespace TechRentingSystem.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IUserService userService;
 
+
         public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> _roleManager, IUserService _userService)
         {
             userManager = _userManager;
