@@ -4,7 +4,7 @@ using TechRentingSystem.Data;
 using TechRentingSystem.Data.Models;
 using TechRentingSystem.Models.Cameras;
 using TechRentingSystem.Models.Home;
-using TechRentingSystem.Repository.IRepository;
+using TechRentingSystem.Repository.Repository;
 
 namespace TechRentingSystem.Areas.Admin.Controllers
 {

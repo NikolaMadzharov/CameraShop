@@ -9,7 +9,7 @@ using TechRentingSystem.Data.Models.Account;
 using TechRentingSystem.Infrastructure;
 using TechRentingSystem.Models;
 using TechRentingSystem.Repository;
-using TechRentingSystem.Repository.IRepository;
+using TechRentingSystem.Repository.Repository;
 using TechRentingSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);

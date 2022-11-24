@@ -1,6 +1,6 @@
 ﻿using TechRentingSystem.Data;
 using TechRentingSystem.Data.Models;
-using TechRentingSystem.Repository.IRepository;
+using TechRentingSystem.Repository.Repository;
 
 namespace TechRentingSystem.Repository
 {
@@ -16,6 +16,7 @@ namespace TechRentingSystem.Repository
             Product = new ProductRepositry(_data);
             OrderDetail = new OrderDetailRepository(_data);
             OrderHeader = new OrderHeaderRepository(_data);
+            Review = new ReviewRepository(_data);
         }
 
         public IApplicationUserRepository ApplicationUser { get; private set; }
@@ -25,6 +26,8 @@ namespace TechRentingSystem.Repository
         public IOrderDetailRepository OrderDetail { get; private set; } 
 
         public IOrderHeaderRepository OrderHeader { get; private set; }
+
+        public IReviewRepository Review { get; private set; }
 
         public void Dispose()
         {

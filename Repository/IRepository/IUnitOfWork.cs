@@ -1,4 +1,4 @@
-﻿namespace TechRentingSystem.Repository.IRepository
+﻿namespace TechRentingSystem.Repository.Repository
 {
     public interface IUnitOfWork 
     {
@@ -8,6 +8,7 @@
 
         IOrderDetailRepository OrderDetail { get; }
         IOrderHeaderRepository OrderHeader{ get; }
+        IReviewRepository Review { get; }
         void Save();
     }
 }

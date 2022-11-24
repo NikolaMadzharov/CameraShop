@@ -3,7 +3,7 @@ using TechRentingSystem.Models.Cameras;
 using TechRentingSystem.Models.Home;
 using TechRentingSystem.repository;
 
-namespace TechRentingSystem.Repository.IRepository
+namespace TechRentingSystem.Repository.Repository
 {
     public interface IProductRepository :IRepository<Camera>
     {

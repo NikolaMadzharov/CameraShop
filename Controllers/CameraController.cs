@@ -11,7 +11,7 @@ namespace TechRentingSystem.Controllers
     using TechRentingSystem.Models.Cameras;
     using TechRentingSystem.Models.Enum;
     using TechRentingSystem.Models.Product;
-    using TechRentingSystem.Repository.IRepository;
+    using TechRentingSystem.Repository.Repository;
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
     public class CameraController : BaseController
@@ -27,10 +27,7 @@ namespace TechRentingSystem.Controllers
         }
 
 
-        public IActionResult Add() => this.View(new AddCameraFromModel
-        {
-            Categories = this.GetCameraCategories()
-        });
+      
 
         [AllowAnonymous]
         public IActionResult All([FromQuery] AllCameraQueryModel query)
@@ -88,34 +85,8 @@ namespace TechRentingSystem.Controllers
             return View(query);
         }
 
-        [HttpPost]
-        public IActionResult Add(AddCameraFromModel camera)
-        {
-            //if (!ModelState.IsValid)
-            //{
-            //    camera.Categories = this.GetCameraCategories();
+     
 
-            //    return this.View(camera);
-            //}
-
-            var cameraData = new Camera
-            {
-                Brand = camera.Brand,
-                Model = camera.Model,
-                Description = camera.Description,
-                ImageUrl = camera.ImageUrl,
-                Year = camera.Year,
-                Price = camera.Price,
-                CategoryId = camera.CategoryId
-            };
-            this.data.Add(cameraData);
-            this.data.SaveChanges();
-
-            return this.RedirectToAction(nameof(this.All));
-        }
-
-        private IEnumerable<CameraCategoryViewModel> GetCameraCategories() =>
-            this.data.Categories.Select(x => new CameraCategoryViewModel { Id = x.Id, Name = x.Name, }).ToList();
 
         [HttpGet]
         public async Task<IActionResult> Details(int productId)
@@ -130,6 +101,7 @@ namespace TechRentingSystem.Controllers
 
             return View(cartObj);
         }
+
 
 
         [HttpPost]
@@ -156,25 +128,7 @@ namespace TechRentingSystem.Controllers
 
             return RedirectToAction("Index","Cart");
         }
-
-
-        public async Task<ProductDetailsModel> GetProductDetails(int productId)
-        {
-            var product = await data.Cameras.FirstOrDefaultAsync(x => x.Id == productId);
-            var model = new ProductDetailsModel()
-            {
-                Id = productId,
-                Brand = product.Brand,
-                Model = product.Model,
-                Price = product.Price,
-                Description = product.Description,
-                ImageUrl = product.ImageUrl,
-                Count = 1
-            };
-
-
-            return model;
-
-        }
+     
+        
     }
 }

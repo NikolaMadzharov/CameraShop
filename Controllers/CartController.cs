@@ -12,7 +12,7 @@ using System.Security.Claims;
 using TechRentingSystem.Data;
 
 using TechRentingSystem.Models.Cart;
-using TechRentingSystem.Repository.IRepository;
+using TechRentingSystem.Repository.Repository;
 
 namespace TechRentingSystem.Controllers
 {

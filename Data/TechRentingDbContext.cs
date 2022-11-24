@@ -22,6 +22,8 @@ namespace TechRentingSystem.Data
         public DbSet<OrderHeader> OrderHeaders { get; init; }
         public DbSet<OrderDetails> OrderDetails { get; init; }
 
+        public DbSet<Review> Reviews { get; init; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -31,6 +33,19 @@ namespace TechRentingSystem.Data
                 .WithMany(c => c.Cameras)
                 .HasForeignKey(c => c.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            builder.Entity<Review>(r =>
+            {
+                r.HasOne(u => u.ApplicationUser)
+                .WithMany(r => r.Reviews)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                r.HasOne(c => c.Camera)
+                .WithMany(r => r.Reviews)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
 
             base.OnModelCreating(builder);
         }

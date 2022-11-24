@@ -1,6 +1,6 @@
 ﻿using TechRentingSystem.Data;
 using TechRentingSystem.Data.Models;
-using TechRentingSystem.Repository.IRepository;
+using TechRentingSystem.Repository.Repository;
 
 namespace TechRentingSystem.Repository
 {
