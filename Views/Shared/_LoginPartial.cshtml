@@ -25,7 +25,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile</a>
             <div class="dropdown-menu" style="">
-                <a class="nav-link active" asp-controller="Account" asp-action="MyProfile">MyProfile</a>
+                <a class="nav-link active" asp-area="" asp-controller="Account" asp-action="MyProfile">MyProfile</a>
                 @if (User.IsInRole(RoleConstants.Admin))
                 {
                     <a class="nav-link active" asp-area="Admin" asp-controller="User" asp-action="Index" class="btn btn-danger">User Management</a>

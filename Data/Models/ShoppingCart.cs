@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations.Schema;
 using TechRentingSystem.Data.Models.Account;
+using TechRentingSystem.Models.Review;
 
 namespace TechRentingSystem.Data.Models
 {
@@ -22,6 +23,8 @@ namespace TechRentingSystem.Data.Models
 
         [NotMapped]
         public double Price { get; set; }
+
+        public ICollection<ReviewViewModel> Reviews { get; set; } = new HashSet<ReviewViewModel>();
 
     }
 }

@@ -41,6 +41,7 @@ namespace TechRentingSystem.Repository
                 ApplicationUserId = model.ApplicationUserId,
                 DateOfPublication = model.DateOfPublication,
             };
+            
 
             await this._data.AddAsync(review);
             await this._data.SaveChangesAsync();
@@ -57,6 +58,15 @@ namespace TechRentingSystem.Repository
 
 
             await this._data.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Review>> GetAllReview(int cameraId)
+        {
+            var allReviews = await _data.Reviews.Where(x => x.CameraId == cameraId)
+                .Include(x => x.ApplicationUser)
+                .ToListAsync();
+
+            return allReviews;
         }
 
         public Task<EditReviewViewModel> GetReviewForEdit(int id)

@@ -55,7 +55,7 @@
            asp-route-searchTerm="@Model.searchTerm"
            asp-route-sorting="@((int)Model.Sorting)"><<</a>
     </div>
-    <div class="col-md-3 mt-3" >
+    <div class="offset-4 col-2">
         <a class="btn btn-primary float-right @(Model.CurrentPage == maxPage ? "disabled" : string.Empty)"
            asp-controller="Camera"
            asp-action="All"

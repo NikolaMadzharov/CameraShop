@@ -5,6 +5,10 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechRentingSystem", "TechRentingSystem.csproj", "{8C64D552-1908-403E-984B-5E5A84D0243B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraShop.Infrastructure", "..\CameraShop.Infrastructure\CameraShop.Infrastructure.csproj", "{0DD5040D-C7B5-4B14-9769-44BE6DAB4CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraShop.Core", "..\CameraShop.Core\CameraShop.Core.csproj", "{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8C64D552-1908-403E-984B-5E5A84D0243B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C64D552-1908-403E-984B-5E5A84D0243B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C64D552-1908-403E-984B-5E5A84D0243B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD5040D-C7B5-4B14-9769-44BE6DAB4CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD5040D-C7B5-4B14-9769-44BE6DAB4CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD5040D-C7B5-4B14-9769-44BE6DAB4CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD5040D-C7B5-4B14-9769-44BE6DAB4CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

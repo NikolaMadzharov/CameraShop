@@ -11,6 +11,7 @@ namespace TechRentingSystem.Controllers
     using TechRentingSystem.Models.Cameras;
     using TechRentingSystem.Models.Enum;
     using TechRentingSystem.Models.Product;
+    using TechRentingSystem.Models.Review;
     using TechRentingSystem.Repository.Repository;
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -91,12 +92,23 @@ namespace TechRentingSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int productId)
         {
+            var reviews = await _unitOfWork.Review.GetAllReview(productId);
+
 
             ShoppingCart cartObj = new()
             {
                 Count = 1,
                 CameraId = productId,
-                Camera = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId)
+                Camera = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId),
+                Reviews = reviews.Select(x => new ReviewViewModel
+                {
+                    Id = x.Id,
+                    Comment = x.Comment,
+                    Rating = x.Rating,
+                    UserFullName = x.ApplicationUser.FirstName,
+                    DateOfPublication = x.DateOfPublication
+                }).ToList()
+
             };
 
             return View(cartObj);

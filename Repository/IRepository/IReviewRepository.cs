@@ -13,5 +13,7 @@ namespace TechRentingSystem.Repository.Repository
         Task<EditReviewViewModel> GetReviewForEdit(int id);
 
         Task Update(EditReviewViewModel model);
+
+        Task<IEnumerable<Review>> GetAllReview(int cameraId);
     }
 }

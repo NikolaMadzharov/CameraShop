@@ -25,6 +25,6 @@ namespace TechRentingSystem.Data.Models
         public ApplicationUser ApplicationUser { get; set; } = null!;
 
         public int CameraId { get; set; }
-        public Camera Camera { get; set; } = null!;
+        public Camera Camera { get; set; } 
     }
 }
