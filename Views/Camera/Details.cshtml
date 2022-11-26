@@ -1,4 +1,4 @@
-﻿@using TechRentingSystem.Data.Models
+﻿@using CameraShop.Infrastructure.Data.Models
 
 @model ShoppingCart
 
@@ -72,7 +72,7 @@
                 <div class="container my-5 py-5">
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-12 col-lg-10 col-xl-8">
-                            @foreach (var review in Model.Reviews)
+                            @foreach (var review in Model.Camera.Reviews)
                             {
                                 <div class="card">
                                     <div class="card-body">
@@ -81,7 +81,7 @@
                                              src="https://localhost:7062/img/avatar4.png" alt="avatar" width="60"
                                              height="60" />
                                             <div>
-                                                <h6 class="fw-bold text-primary mb-1">@review.UserFullName</h6>
+                                                <h6 class="fw-bold text-primary mb-1">@review.ApplicationUser.FirstName @review.ApplicationUser.LastName</h6>
                                                 <p class="text-muted small mb-0">
                                                     Shared review - @review.DateOfPublication
                                                 </p>

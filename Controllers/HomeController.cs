@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TechRentingSystem.Models;
+
 
 namespace TechRentingSystem.Controllers
 {
-    using TechRentingSystem.Data;
-    using TechRentingSystem.Models.Home;
+    using CameraShop.Core.Models;
+    using CameraShop.Core.Models.Home;
+    using CameraShop.Infrastructure.Data;
+ 
+  
 
     public class HomeController : Controller
     {

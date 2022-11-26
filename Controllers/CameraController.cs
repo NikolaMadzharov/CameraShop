@@ -2,18 +2,15 @@
 
 namespace TechRentingSystem.Controllers
 {
+    using CameraShop.Core.Models.Enum;
+    using CameraShop.Core.Models.Product;
+    using CameraShop.Core.Models.Review;
+    using CameraShop.Core.Repository.IRepository;
+    using CameraShop.Infrastructure.Data;
+    using CameraShop.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.EntityFrameworkCore;
     using System.Security.Claims;
-    using TechRentingSystem.Contracts;
-    using TechRentingSystem.Data;
-    using TechRentingSystem.Data.Models;
-    using TechRentingSystem.Models.Cameras;
-    using TechRentingSystem.Models.Enum;
-    using TechRentingSystem.Models.Product;
-    using TechRentingSystem.Models.Review;
-    using TechRentingSystem.Repository.Repository;
-    using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+ 
 
     public class CameraController : BaseController
     {
@@ -99,16 +96,8 @@ namespace TechRentingSystem.Controllers
             {
                 Count = 1,
                 CameraId = productId,
-                Camera = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId),
-                Reviews = reviews.Select(x => new ReviewViewModel
-                {
-                    Id = x.Id,
-                    Comment = x.Comment,
-                    Rating = x.Rating,
-                    UserFullName = x.ApplicationUser.FirstName,
-                    DateOfPublication = x.DateOfPublication
-                }).ToList()
-
+                Camera = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId, includeProperties: "Reviews"),
+              
             };
 
             return View(cartObj);

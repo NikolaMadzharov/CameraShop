@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CameraShop.Core.Models.Account;
+using CameraShop.Infrastructure.Data.Models.Account;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using TechRentingSystem.Contracts;
-using TechRentingSystem.Data.Models.Account;
-using TechRentingSystem.Models.Account;
-
 namespace TechRentingSystem.Areas.Admin.Controllers
 {
     public class UserController : BaseController

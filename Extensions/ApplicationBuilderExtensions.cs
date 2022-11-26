@@ -1,9 +1,9 @@
 ﻿namespace TechRentingSystem.Infrastructure
 {
+    using CameraShop.Infrastructure.Data;
+    using CameraShop.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
 
-    using TechRentingSystem.Data;
-    using TechRentingSystem.Data.Models;
 
     public static class ApplicationBuilderExtensions
     {

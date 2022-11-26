@@ -1,5 +1,5 @@
-﻿using TechRentingSystem.Data.Models.Account;
-using TechRentingSystem.Models.Account;
+﻿using CameraShop.Core.Models.Account;
+using CameraShop.Infrastructure.Data.Models.Account;
 
 namespace TechRentingSystem.Contracts
 {

@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CameraShop.Core.Models.Account;
+using CameraShop.Infrastructure.Data;
+using CameraShop.Infrastructure.Data.Models.Account;
+using Microsoft.EntityFrameworkCore;
 using TechRentingSystem.Contracts;
-using TechRentingSystem.Data;
-using TechRentingSystem.Data.Models.Account;
-using TechRentingSystem.Models.Account;
 
 namespace TechRentingSystem.Services
 {

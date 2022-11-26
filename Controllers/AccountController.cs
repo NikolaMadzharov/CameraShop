@@ -2,13 +2,14 @@
 
 namespace TechRentingSystem.Controllers
 {
+    using CameraShop.Core.Models.Account;
+    using CameraShop.Infrastructure.Data.Models.Account;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using System.Security.Claims;
     using TechRentingSystem.Contracts;
-    using TechRentingSystem.Data.Models.Account;
     using TechRentingSystem.Infrastructure;
-    using TechRentingSystem.Models.Account;
+
 
     public class AccountController : BaseController
     {

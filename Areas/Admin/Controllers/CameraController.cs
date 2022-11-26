@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TechRentingSystem.Data;
-using TechRentingSystem.Data.Models;
-using TechRentingSystem.Models.Cameras;
-using TechRentingSystem.Models.Home;
-using TechRentingSystem.Repository.Repository;
+﻿using CameraShop.Core.Models.Product;
+using CameraShop.Core.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TechRentingSystem.Areas.Admin.Controllers
 {

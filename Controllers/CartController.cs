@@ -1,18 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 using System.Security.Claims;
-using TechRentingSystem.Data;
-using TechRentingSystem.Data.Models;
 using TechRentingSystem.Infrastructure;
-
-using System.Security.Claims;
-using TechRentingSystem.Data;
-
-using TechRentingSystem.Models.Cart;
-using TechRentingSystem.Repository.Repository;
+using CameraShop.Core.Repository.IRepository;
+using CameraShop.Core.Models.Cart;
+using CameraShop.Infrastructure.Data.Models;
 
 namespace TechRentingSystem.Controllers
 {

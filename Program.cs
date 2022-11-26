@@ -1,15 +1,13 @@
+using CameraShop.Core.Models;
+using CameraShop.Core.Repository;
+using CameraShop.Core.Repository.IRepository;
+using CameraShop.Infrastructure.Data;
+using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
-using System.Configuration;
 using TechRentingSystem.Contracts;
-using TechRentingSystem.Controllers;
-using TechRentingSystem.Data;
-using TechRentingSystem.Data.Models.Account;
 using TechRentingSystem.Infrastructure;
-using TechRentingSystem.Models;
-using TechRentingSystem.Repository;
-using TechRentingSystem.Repository.Repository;
 using TechRentingSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
