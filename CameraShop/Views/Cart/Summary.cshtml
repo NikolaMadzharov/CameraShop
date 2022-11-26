@@ -1,0 +1,118 @@
+﻿@using CameraShop.Core.Models.Cart
+@model ShoppingCartViewModel
+@using Microsoft.Extensions.Options
+@inject IOptions<CameraShop.Core.Models.StripeSettings> Stripe
+
+
+
+<form method="post">
+    <br />
+    <div class="backgroundWhiteBorder">
+        <div class="container">
+            <div class="card">
+                <div class="card-header bg-indigo text-light ml-0 row container">
+                    <div class="col-6">
+                        <i class="fa fa-shopping-cart"></i> &nbsp;
+                        Order Summary
+                    </div>
+                    <div class="col-6 text-right">
+                        <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-info btn-sm">Back to Cart</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container rounded p-2">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 pb-4">
+                                <div class="row">
+                                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="text-info">Customer Details:</span>
+                                    </h4>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>FirstName</label>
+                                    </div>
+                                    <div class="col-9">
+                                             <input readonly asp-for="@Model.OrderHeader.FirstName" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>LastName</label>
+                                    </div>
+                                    <div class="col-9">
+                                            <input readonly asp-for="@Model.OrderHeader.LastName" type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input readonly asp-for="@Model.OrderHeader.Emal" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-5 offset-lg-1">
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-info">Order Summary:</span>
+                                </h4>
+                                <ul class="list-group mb-3">
+                                    @foreach (var details in Model.ListCart)
+                                    {
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div>
+                                                <h6 class="my-0">@details.Camera.Brand@(details.Camera.Model)e</h6>
+                                                <small class="text-muted">Quantity: @details.Count</small>
+                                            </div>
+                                            <span class="text-muted">$@((details.Price * details.Count)) </span>
+                                        </li>
+                                    }
+
+                                    <li class="list-group-item d-flex justify-content-between bg-light">
+                                        <small class="text-info">Total (USD)</small>
+                                        <strong class="text-info">$@(Model.OrderHeader.OrderTotal)</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12 col-md-8 pt-2">
+                            <p style="color:maroon; font-size:14px;">Date: @DateTime.Now.ToString("MM/dd/yyyy")</p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            
+                            @{
+                            var OrderTotalForStripe = Model.OrderHeader.OrderTotal * 100;
+                            }
+
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="@Stripe.Value.PublishableKey"
+                            data-amount="@OrderTotalForStripe"
+                            data-name="TechRentingSystem"
+                            data-label="Place Order"
+                            data-description="Get the best cameras!"
+                            data-locale="auto"
+                            data-allow-remember-me="false"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
+                            </script>
+                            <script>
+                            document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                            </script>
+
+                            <button type="submit" value="Place Order" class="btn btn-success form-control">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

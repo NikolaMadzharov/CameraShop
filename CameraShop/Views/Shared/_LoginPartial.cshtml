@@ -1,0 +1,55 @@
+﻿@using CameraShop.Infrastructure.Data.Models.Account
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Security.Claims
+@using TechRentingSystem.Infrastructure
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="" asp-area="" asp-controller="Cart" asp-action="Index"><i class="bi bi-cart4"></i></a>
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="" title="Manage">Hello @User.FindFirst("first_name").Value</a>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile</a>
+            <div class="dropdown-menu" style="">
+                <a class="nav-link active" asp-area="" asp-controller="Account" asp-action="MyProfile">MyProfile</a>
+                @if (User.IsInRole(RoleConstants.Admin))
+                {
+                    <a class="nav-link active" asp-area="Admin" asp-controller="User" asp-action="Index" class="btn btn-danger">User Management</a>
+                    <a class="nav-link active" asp-area="Admin" asp-controller="Camera" asp-action="Index" class="btn btn-danger">Camera Management</a>
+
+                }
+
+            </div>
+        </li>
+
+        
+
+    }
+    else
+    {
+
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+
+
+    }
+</ul>
