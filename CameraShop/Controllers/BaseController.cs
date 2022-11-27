@@ -8,7 +8,7 @@
     [Authorize]
     public class BaseController : Controller
     {
-
+        //Create a claim and use it later in the login page to visualize the user first name.
         public string UserFirstName
         {
             get
@@ -29,11 +29,5 @@
 
         }
 
-        //public override void OnActionExecuted(ActionExecutedContext context)
-        //{ 
-        //    ViewBag.UserFirstName = UserFirstName;
-
-        //    base.OnActionExecuted(context);
-        //}
     }
 }

@@ -3,11 +3,12 @@
 namespace TechRentingSystem.Controllers
 {
     using CameraShop.Core.Models.Account;
+    using CameraShop.Core.Repository.IRepository;
     using CameraShop.Infrastructure.Data.Models.Account;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using System.Security.Claims;
-    using TechRentingSystem.Contracts;
+  
     using TechRentingSystem.Infrastructure;
 
 
@@ -17,17 +18,22 @@ namespace TechRentingSystem.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly IUserService userService;
+        private IUnitOfWork _unitOfWork;
+     
 
 
-        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> _roleManager, IUserService _userService)
+        public AccountController(UserManager<ApplicationUser> _userManager,
+             SignInManager<ApplicationUser> _signInManager,
+             RoleManager<IdentityRole> _roleManager,
+            IUnitOfWork unitOfWork)
         {
             userManager = _userManager;
             signInManager = _signInManager;
             roleManager = _roleManager;
-            userService = _userService;
+            _unitOfWork = unitOfWork;
         }
 
+        // Redirect to register page.
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Register()
@@ -37,6 +43,7 @@ namespace TechRentingSystem.Controllers
             return View(model);
         }
 
+        //Create account for the user.
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -75,6 +82,7 @@ namespace TechRentingSystem.Controllers
             return View(model);
         }
 
+        //Get the login page.
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string? returnUrl = null)
@@ -84,6 +92,7 @@ namespace TechRentingSystem.Controllers
             return View(model);
         }
 
+        //Sign In the user in the shop.
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -115,6 +124,7 @@ namespace TechRentingSystem.Controllers
 
         }
 
+        //Log Out the user from the site.
         public async Task<IActionResult> Logout(string? url = null)
         {
             await signInManager.SignOutAsync();
@@ -122,6 +132,7 @@ namespace TechRentingSystem.Controllers
             return this.RedirectToAction("Index", "Home");
         }
 
+        //Creates roles Admin and Seller.It has to be done only one time.
         public async Task<IActionResult> CreateRoles()
         {
         
@@ -130,7 +141,7 @@ namespace TechRentingSystem.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
+        //Add role to the user find by the given email.
         public async Task<IActionResult> AddUsersToRoles()
         {
 
@@ -145,25 +156,25 @@ namespace TechRentingSystem.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
+        //Get the my profile page.
         public async Task<IActionResult> MyProfile()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var model = await this.userService.GetUserProfile(userId);
+            var model = await this._unitOfWork.ApplicationUser.GetUserProfile(userId);
 
             return View(model);
         }
-
+        //Get the edit page.(First name, last name, email).
         public async Task<IActionResult> Edit()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var model = await this.userService.GetUserForEdit(userId);
+            var model = await this._unitOfWork.ApplicationUser.GetUserForEdit(userId);
 
             return View(model);
         }
-
+        //CHange the user's first name and last name 
         [HttpPost]
         public async Task<IActionResult> Edit(UserEditViewModel model)
         {
@@ -173,7 +184,7 @@ namespace TechRentingSystem.Controllers
 
           
 
-            await this.userService.UpdateUser(model);
+            await this._unitOfWork.ApplicationUser.UpdateUser(model);
 
             return RedirectToAction("MyProfile", "Account");
         }

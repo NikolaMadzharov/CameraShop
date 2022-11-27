@@ -1,36 +1,37 @@
 ﻿using CameraShop.Core.Models.Account;
+using CameraShop.Core.Repository.IRepository;
 using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
-using TechRentingSystem.Contracts;
 namespace TechRentingSystem.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IUserService userService;
-
+        private readonly IUnitOfWork _unitOfWork;
         public UserController(UserManager<ApplicationUser> userManager,
-                              IUserService userService,
+                              IUnitOfWork unitOfWork,
                               RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
-            this.userService = userService;
+            this._unitOfWork = unitOfWork;
             this.roleManager = roleManager;
         }
 
+        // Get the all user information(id,roles).
         public async Task<IActionResult> Index()
         {
-            var model = await this.userService.GetUsers();
+            var model = await _unitOfWork.ApplicationUser.GetUsers();
             return View(model);
         }
 
+        // Get all the user's roles and tells if he is in role.
         public async Task<IActionResult> Roles(string id)
         {
-            var user = await userService.GetUserById(id);
+            var user = await _unitOfWork.ApplicationUser.GetUserById(id);
             var model = new UserRolesViewModel()
             {
                 UserId = user.Id,
@@ -49,11 +50,11 @@ namespace TechRentingSystem.Areas.Admin.Controllers
 
             return View(model);
         }
-
+        // Add or remove the role of the current user.
         [HttpPost]
         public async Task<IActionResult> Roles(UserRolesViewModel model)
         {
-            var user = await userService.GetUserById(model.UserId);
+            var user = await _unitOfWork.ApplicationUser.GetUserById(model.UserId);
             var userRoles = await userManager.GetRolesAsync(user);
             await userManager.RemoveFromRolesAsync(user, userRoles);
 
@@ -65,15 +66,17 @@ namespace TechRentingSystem.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // 
         public async Task<IActionResult> Edit()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var model = await this.userService.GetUserForEdit(userId);
+            var model = await _unitOfWork.ApplicationUser.GetUserForEdit(userId);
 
             return View(model);
         }
 
+        // 
         [HttpPost]
         public async Task<IActionResult> Edit(UserEditViewModel model)
         {
@@ -83,7 +86,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
 
 
 
-            await this.userService.UpdateUser(model);
+            await _unitOfWork.ApplicationUser.UpdateUser(model);
 
             return RedirectToAction("Index", "User");
         }

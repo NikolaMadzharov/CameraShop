@@ -13,6 +13,8 @@ namespace TechRentingSystem.Areas.Admin.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
+        // Return to the admin page(index).
         public async Task<IActionResult> Index()
         {
             var allCameras = await this._unitOfWork.Product.GetCamerasAsync();
@@ -24,8 +26,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
             Categories = await this._unitOfWork.Product.GetCameraCategories()
         });
 
-     
-
+        // Redirect to Add view where you can add camera.
         [HttpPost]
         public async Task<IActionResult> Add(AddCameraFromModel camera)
         {
@@ -34,6 +35,8 @@ namespace TechRentingSystem.Areas.Admin.Controllers
 
             return this.RedirectToAction(nameof(Index));
         }
+
+        // Delete the current camera from the store.
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {

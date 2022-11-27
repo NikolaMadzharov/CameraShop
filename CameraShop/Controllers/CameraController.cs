@@ -18,7 +18,8 @@ namespace TechRentingSystem.Controllers
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public CameraController(TechRentingDbContext data, IUnitOfWork unitOfWork)
+        public CameraController(TechRentingDbContext data,
+             IUnitOfWork unitOfWork)
         {
             this.data = data;
             _unitOfWork = unitOfWork;
