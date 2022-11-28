@@ -21,14 +21,14 @@ namespace TechRentingSystem.Areas.Admin.Controllers
             this.roleManager = roleManager;
         }
 
-        // Get the all user information(id,roles).
+      
         public async Task<IActionResult> Index()
         {
             var model = await _unitOfWork.ApplicationUser.GetUsers();
             return View(model);
         }
 
-        // Get all the user's roles and tells if he is in role.
+      
         public async Task<IActionResult> Roles(string id)
         {
             var user = await _unitOfWork.ApplicationUser.GetUserById(id);
@@ -50,7 +50,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
 
             return View(model);
         }
-        // Add or remove the role of the current user.
+       
         [HttpPost]
         public async Task<IActionResult> Roles(UserRolesViewModel model)
         {
@@ -66,7 +66,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // 
+      
         public async Task<IActionResult> Edit()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -76,7 +76,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
             return View(model);
         }
 
-        // 
+      
         [HttpPost]
         public async Task<IActionResult> Edit(UserEditViewModel model)
         {

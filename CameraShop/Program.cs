@@ -6,9 +6,8 @@ using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
-using TechRentingSystem.Contracts;
 using TechRentingSystem.Infrastructure;
-using TechRentingSystem.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,8 +30,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<TechRentingDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IUserService, UserService>();
-
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
