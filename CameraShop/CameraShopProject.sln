@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CameraShop.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CameraShop.Core", "..\CameraShop.Core\CameraShop.Core.csproj", "{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraShop.Repositories.Tests", "..\CameraShop.Repositories.Tests\CameraShop.Repositories.Tests.csproj", "{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

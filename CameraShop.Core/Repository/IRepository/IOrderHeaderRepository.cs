@@ -1,4 +1,5 @@
-﻿using CameraShop.Infrastructure.Data.Models;
+﻿using CameraShop.Core.Models.Account;
+using CameraShop.Infrastructure.Data.Models;
 
 namespace CameraShop.Core.Repository.IRepository
 {
@@ -8,5 +9,7 @@ namespace CameraShop.Core.Repository.IRepository
 
         void UpdateStatus(int id, string orderStatus, string? paymentStatus = null);
         public void UpdateStripePaymendId(int id, string sessionId, string? paymentItentId);
+
+       
     }
 }

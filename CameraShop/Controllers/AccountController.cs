@@ -145,7 +145,7 @@ namespace TechRentingSystem.Controllers
         public async Task<IActionResult> AddUsersToRoles()
         {
 
-            string email = "nikola19@abv.bg";
+            string email = "nikola20@abv.bg";
             
 
 
