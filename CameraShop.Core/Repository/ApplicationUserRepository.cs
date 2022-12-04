@@ -25,6 +25,11 @@ namespace CameraShop.Core.Repository
 
             var user = await GetUserById(id);
 
+            if (user ==  null)
+            {
+                throw new NullReferenceException();
+            }
+
             return new UserEditViewModel()
             {
                 Id = user.Id,
@@ -69,6 +74,11 @@ namespace CameraShop.Core.Repository
         {
             bool result = false;
             var user = await GetUserById(model.Id);
+
+            if (user ==  null)
+            {
+                throw new NullReferenceException();
+            }
 
 
             if (user != null)

@@ -80,11 +80,11 @@
                                 <p class="card-title h5"><b style="color:#2c3e50">@camera.Brand</b></p>
                            @*     <p class="card-title text-primary">by <b>@camera.Author</b></p>*@
                             </div>
+                           @* <div style="padding-left:5px;">
+                            <p>Old Price: <strike><b class="">@(camera.Price + 30) lv</b></strike></p>
+                            </div>*@
                             <div style="padding-left:5px;">
-                                <p>Old Price: <strike><b class="">@camera.Price lv</b></strike></p>
-                            </div>
-                            <div style="padding-left:5px;">
-                                <p style="color:maroon">As low as: <b class="">$@camera.Price.ToString("0.00")</b></p>
+                                <p style="color:maroon">Limited Price: <b class="">$@camera.Price.ToString("0.00") lv</b></p>
                             </div>
                         </div>
                         <div>
