@@ -69,7 +69,7 @@ namespace CameraShop.Repositories.Tests
 
             cameraService.Delete(1);
 
-            Assert.AreEqual(1, dbContext.Cameras.Count());
+            Assert.AreEqual(0, dbContext.Cameras.Count());
 
 
 
