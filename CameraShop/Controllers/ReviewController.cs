@@ -8,6 +8,8 @@ namespace TechRentingSystem.Controllers
     using Microsoft.AspNetCore.Identity;
     using CameraShop.Core.Repository.IRepository;
     using CameraShop.Core.Models.Review;
+    using Ganss.XSS;
+    using Ganss.Xss;
 
     public class ReviewController : BaseController
     {
@@ -36,6 +38,8 @@ namespace TechRentingSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReview(AddReviewViewModel model)
         {
+            var saitizer = new HtmlSanitizer();
+            model.Comment = saitizer.Sanitize(model.Comment);
             model.DateOfPublication = DateTime.Now;
 
             if (!this.ModelState.IsValid)
