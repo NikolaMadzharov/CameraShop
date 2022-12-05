@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CameraShop.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CameraShop.Core", "..\CameraShop.Core\CameraShop.Core.csproj", "{405A8D7C-4DA8-4F6C-9A03-4731C17F5E9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CameraShop.Repositories.Tests", "..\CameraShop.Repositories.Tests\CameraShop.Repositories.Tests.csproj", "{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CameraShop.Tests", "..\CameraShop.Repositories.Tests\CameraShop.Tests.csproj", "{F4CCCFBB-4005-4BDD-A4A8-E0861B753067}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
