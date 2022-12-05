@@ -1,12 +1,11 @@
-﻿
-using CameraShop.Core.Models.Product;
+﻿using CameraShop.Core.Models.Product;
 using CameraShop.Core.Repository;
 using CameraShop.Infrastructure.Data;
 using CameraShop.Infrastructure.Data.Models;
 using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.EntityFrameworkCore;
 
-namespace CameraShop.Repositories.Tests
+namespace CameraShop.Tests.ShoppingCart
 {
     public class ShoppingCartTests
     {
@@ -21,9 +20,9 @@ namespace CameraShop.Repositories.Tests
 
             var shoppingCartService = new ShoppingCartRepository(dbContext);
 
-          
 
-            var shoppingCart =  new ShoppingCart
+
+            var shoppingCart = new ShoppingCart
             {
                 id = 1,
                 Camera = new Camera
@@ -51,13 +50,13 @@ namespace CameraShop.Repositories.Tests
 
             };
 
-            await  dbContext.AddAsync(shoppingCart);
+            await dbContext.AddAsync(shoppingCart);
             await dbContext.SaveChangesAsync();
 
-           
+
             Assert.AreEqual(3, shoppingCartService.IncrementCount(shoppingCart, 2));
-          
-          
+
+
 
 
         }
@@ -104,7 +103,7 @@ namespace CameraShop.Repositories.Tests
             await dbContext.AddAsync(shoppingCart);
             await dbContext.SaveChangesAsync();
 
-          
+
             Assert.AreEqual(9, shoppingCartService.DecrementCount(shoppingCart, 1));
         }
     }

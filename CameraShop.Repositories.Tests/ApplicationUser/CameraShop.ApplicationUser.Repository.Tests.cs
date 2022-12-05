@@ -4,7 +4,7 @@ using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace CameraShop.Repositories.Tests
+namespace CameraShop.Tests.ApplicationUser
 {
     public class ApplicationUserRepositoryTests
     {
@@ -24,13 +24,13 @@ namespace CameraShop.Repositories.Tests
                 FirstName = "Ivan",
                 LastName = "Kolev",
                 Email = "Petio@abv.bg"
-               
+
             };
 
             dbContext.AddAsync(user);
             dbContext.SaveChangesAsync();
 
-            var result =  applicationUserService.GetUserById(user.Id);
+            var result = applicationUserService.GetUserById(user.Id);
 
             Assert.NotNull(result);
             Assert.AreEqual("Ivan", result.Result.FirstName);
@@ -87,7 +87,7 @@ namespace CameraShop.Repositories.Tests
             var dbContext = new TechRentingDbContext(optionsBuilder.Options);
 
 
-            var applicationUserService =  new ApplicationUserRepository(dbContext);
+            var applicationUserService = new ApplicationUserRepository(dbContext);
 
 
             var user = new ApplicationUser
@@ -99,10 +99,10 @@ namespace CameraShop.Repositories.Tests
 
             };
 
-          await dbContext.AddAsync(user);
-          await dbContext.SaveChangesAsync();
+            await dbContext.AddAsync(user);
+            await dbContext.SaveChangesAsync();
 
-           var result = await applicationUserService.GetUserForEdit(user.Id);
+            var result = await applicationUserService.GetUserForEdit(user.Id);
 
             Assert.NotNull(result);
             Assert.AreEqual("Petio", result.FirstName);
