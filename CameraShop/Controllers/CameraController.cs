@@ -88,6 +88,7 @@ namespace TechRentingSystem.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int productId)
         {
             var reviews = await _unitOfWork.Review.GetAllReview(productId);

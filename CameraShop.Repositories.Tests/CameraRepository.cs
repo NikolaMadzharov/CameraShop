@@ -67,7 +67,7 @@ namespace CameraShop.Repositories.Tests
 
             await cameraService.Add(CameraToAdd);
 
-            cameraService.Delete(1);
+          await  cameraService.Delete(1);
 
             Assert.AreEqual(0, dbContext.Cameras.Count());
 
@@ -90,8 +90,8 @@ namespace CameraShop.Repositories.Tests
                 Name = "Sony"
             };
 
-            dbContext.AddRangeAsync(category);
-            dbContext.SaveChangesAsync();
+          await  dbContext.AddRangeAsync(category);
+          await  dbContext.SaveChangesAsync();
 
             Assert.AreEqual(1, dbContext.Categories.FirstAsync().Result.Id);
             Assert.AreEqual("Sony", dbContext.Categories.FirstAsync().Result.Name);

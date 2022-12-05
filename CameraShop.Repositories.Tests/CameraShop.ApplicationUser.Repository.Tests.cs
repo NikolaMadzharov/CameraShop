@@ -1,15 +1,8 @@
-﻿using CameraShop.Core.Models.Account;
-using CameraShop.Core.Repository;
+﻿using CameraShop.Core.Repository;
 using CameraShop.Infrastructure.Data;
 using CameraShop.Infrastructure.Data.Models.Account;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CameraShop.Repositories.Tests
 {
