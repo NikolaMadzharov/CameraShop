@@ -15,6 +15,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
         }
 
         // Return to the admin page(index).
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var allCameras = await this._unitOfWork.Product.GetCamerasAsync();
@@ -38,7 +39,7 @@ namespace TechRentingSystem.Areas.Admin.Controllers
 
         // Delete the current camera from the store.
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete([FromForm] int id)
         {
             await this._unitOfWork.Product.Delete(id);
 

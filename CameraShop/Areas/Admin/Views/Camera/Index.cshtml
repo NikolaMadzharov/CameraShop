@@ -5,15 +5,15 @@
 <div class="row">
     <div class="col-12">
         <form method="post">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">@ViewData["Title"]</h3>
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">@ViewData["Title"]</h3>
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
                         </div>
                     </div>
                 </div>
-         </div>
+            </div>
 
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -27,17 +27,17 @@
                     <tbody>
                         @foreach (var camera in Model)
                         {
-                                <tr style="background-color: #14a4c4">
-                                    <td>@camera.Id</td>
-                                    <td>@camera.Brand</td>
-                                    <td>@camera.Model</td>
-                                    <td>
-                                        <form asp-area="Admin" asp-action="Delete" asp-controller="Camera">
-                                            <input name="id" type="hidden" value="@camera.Id" />
-                                            <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                            <tr style="background-color: #14a4c4">
+                                <td>@camera.Id</td>
+                                <td>@camera.Brand</td>
+                                <td>@camera.Model</td>
+                                <td>
+                                    <form asp-area="Admin" asp-action="Delete" asp-controller="Camera">
+                                        <input name="id" type="hidden" value="@camera.Id" />
+                                        <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
 
                         }
                     </tbody>
@@ -46,7 +46,7 @@
         </form>
     </div>
 </div>
-<a asp-area="Admin" asp-action="Add" asp-controller="Camera"  class="btn btn-block btn-outline-info btn-xs">Add</a>
+<a asp-area="Admin" asp-action="Add" asp-controller="Camera" class="btn btn-block btn-outline-info btn-xs">Add</a>
 
 
 

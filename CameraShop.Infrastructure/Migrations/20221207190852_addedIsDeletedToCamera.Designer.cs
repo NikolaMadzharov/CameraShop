@@ -4,6 +4,7 @@ using CameraShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TechRentingSystem.Migrations
 {
     [DbContext(typeof(TechRentingDbContext))]
-    partial class TechRentingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221207190852_addedIsDeletedToCamera")]
+    partial class addedIsDeletedToCamera
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,7 +1,7 @@
 ﻿using CameraShop.Core.Repository;
 using CameraShop.Infrastructure.Data;
-using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.EntityFrameworkCore;
+using CameraShop.Infrastructure.Data.Models.Account;
 
 
 namespace CameraShop.Tests.ApplicationUser
@@ -18,7 +18,7 @@ namespace CameraShop.Tests.ApplicationUser
 
             var applicationUserService = new ApplicationUserRepository(dbContext);
 
-            var user = new ApplicationUser
+            var user = new 
             {
                 Id = "dasod8iaijoudaij9jiosd-1231",
                 FirstName = "Ivan",
@@ -49,7 +49,7 @@ namespace CameraShop.Tests.ApplicationUser
 
             var applicationUserService = new ApplicationUserRepository(dbContext);
 
-            var user = new ApplicationUser
+            var user = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
             {
                 Id = "dasod8iaijoudaij9d-1231",
                 FirstName = "Petio",
@@ -58,7 +58,7 @@ namespace CameraShop.Tests.ApplicationUser
 
             };
 
-            var user2 = new ApplicationUser
+            var user2 = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
             {
                 Id = "dasod8iaijoudaij9jiosd-1231",
                 FirstName = "Petio",
@@ -90,7 +90,7 @@ namespace CameraShop.Tests.ApplicationUser
             var applicationUserService = new ApplicationUserRepository(dbContext);
 
 
-            var user = new ApplicationUser
+            var user = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
             {
                 Id = "dasod8iaijoudaij9d-12311",
                 FirstName = "Petio",
@@ -124,7 +124,7 @@ namespace CameraShop.Tests.ApplicationUser
             var applicationUserService = new ApplicationUserRepository(dbContext);
 
 
-            var user = new ApplicationUser
+            var user = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
             {
                 Id = "dasod8iaijoudaij9d-12311",
                 FirstName = "Petio",

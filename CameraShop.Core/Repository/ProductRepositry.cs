@@ -35,10 +35,16 @@ namespace CameraShop.Core.Repository
         public async Task Delete(int id)
         {
             var camera = await _data.Cameras.FirstOrDefaultAsync(x => x.Id == id);
+            var reviewCamera = await _data.Reviews.FirstOrDefaultAsync(x => x.CameraId == id);
 
             if (camera == null)
             {
                 throw new ArgumentException("The camera is not found!");
+            }
+
+            if (reviewCamera != null)
+            {
+                _data.Remove(reviewCamera);
             }
 
             _data.Remove(camera);

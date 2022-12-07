@@ -80,6 +80,7 @@ namespace CameraShop.Core.Repository
         {
             T entity = dbSet.Find(id);
             Remove(entity);
+            _data.SaveChanges();
         }
 
         public void Remove(T entity)

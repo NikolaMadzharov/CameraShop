@@ -23,6 +23,7 @@
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
+
         public IEnumerable<CameraCategoryViewModel> Categories { get; set; }
     }
 }

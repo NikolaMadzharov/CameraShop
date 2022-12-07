@@ -4,13 +4,12 @@ namespace TechRentingSystem.Controllers
 {
     using CameraShop.Core.Models.Enum;
     using CameraShop.Core.Models.Product;
-    using CameraShop.Core.Models.Review;
     using CameraShop.Core.Repository.IRepository;
     using CameraShop.Infrastructure.Data;
     using CameraShop.Infrastructure.Data.Models;
     using Microsoft.AspNetCore.Authorization;
     using System.Security.Claims;
- 
+
 
     public class CameraController : BaseController
     {
@@ -26,7 +25,7 @@ namespace TechRentingSystem.Controllers
         }
 
 
-      
+
 
         [AllowAnonymous]
         public IActionResult All([FromQuery] AllCameraQueryModel query)
@@ -84,7 +83,7 @@ namespace TechRentingSystem.Controllers
             return View(query);
         }
 
-     
+
 
 
         [HttpGet]
@@ -99,7 +98,7 @@ namespace TechRentingSystem.Controllers
                 Count = 1,
                 CameraId = productId,
                 Camera = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId, includeProperties: "Reviews"),
-              
+
             };
 
             return View(cartObj);
@@ -129,9 +128,9 @@ namespace TechRentingSystem.Controllers
 
             _unitOfWork.Save();
 
-            return RedirectToAction("Index","Cart");
+            return RedirectToAction("Index", "Cart");
         }
-     
-        
+
+
     }
 }

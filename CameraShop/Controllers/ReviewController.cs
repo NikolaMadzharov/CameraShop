@@ -8,7 +8,6 @@ namespace TechRentingSystem.Controllers
     using Microsoft.AspNetCore.Identity;
     using CameraShop.Core.Repository.IRepository;
     using CameraShop.Core.Models.Review;
-    using Ganss.XSS;
     using Ganss.Xss;
 
     public class ReviewController : BaseController

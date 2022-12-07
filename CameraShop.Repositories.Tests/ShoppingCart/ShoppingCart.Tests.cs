@@ -1,8 +1,5 @@
-﻿using CameraShop.Core.Models.Product;
-using CameraShop.Core.Repository;
+﻿using CameraShop.Core.Repository;
 using CameraShop.Infrastructure.Data;
-using CameraShop.Infrastructure.Data.Models;
-using CameraShop.Infrastructure.Data.Models.Account;
 using Microsoft.EntityFrameworkCore;
 
 namespace CameraShop.Tests.ShoppingCart
@@ -22,10 +19,10 @@ namespace CameraShop.Tests.ShoppingCart
 
 
 
-            var shoppingCart = new ShoppingCart
+            var shoppingCart = new CameraShop.Infrastructure.Data.Models.ShoppingCart
             {
                 id = 1,
-                Camera = new Camera
+                Camera = new CameraShop.Infrastructure.Data.Models.Camera
                 {
                     Id = 1,
                     Brand = "X7",
@@ -36,7 +33,7 @@ namespace CameraShop.Tests.ShoppingCart
                     ImageUrl = "https://media.wired.com/photos/5b64db3717c26f0496f4d62d/125:94/w_1976,h_1486,c_limit/Canon-G7XII-SOURCE-Canon.jpg",
                     CategoryId = 1,
                 },
-                ApplicationUser = new ApplicationUser
+                ApplicationUser = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
                 {
                     Id = "dasod8iaijoudaij9jiosd-1231",
                     FirstName = "Ivan",
@@ -72,10 +69,10 @@ namespace CameraShop.Tests.ShoppingCart
 
 
 
-            var shoppingCart = new ShoppingCart
+            var shoppingCart = new CameraShop.Infrastructure.Data.Models.ShoppingCart
             {
                 id = 1,
-                Camera = new Camera
+                Camera = new CameraShop.Infrastructure.Data.Models.Camera
                 {
                     Id = 1,
                     Brand = "X7",
@@ -86,7 +83,7 @@ namespace CameraShop.Tests.ShoppingCart
                     ImageUrl = "https://media.wired.com/photos/5b64db3717c26f0496f4d62d/125:94/w_1976,h_1486,c_limit/Canon-G7XII-SOURCE-Canon.jpg",
                     CategoryId = 1,
                 },
-                ApplicationUser = new ApplicationUser
+                ApplicationUser = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
                 {
                     Id = "dasod8iaijoudaij9jiosd-1231",
                     FirstName = "Ivan",
