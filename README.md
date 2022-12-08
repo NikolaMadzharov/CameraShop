@@ -6,11 +6,11 @@ Infinity Cinema is an application in which you can read a brief description, vie
 
 
 ## :floppy_disk: Database Diagram
-![Database-Diagram](https://user-images.githubusercontent.com/88380154/190187457-03a25dea-99b2-4c92-aa24-ef76fa52c0e8.png)
+
+![DataBaseDiagram](https://user-images.githubusercontent.com/89745007/206549117-20543a5e-10d2-427f-823b-6ad113a26476.png)
 
 
-# Link
-https://infinitycinema.azurewebsites.net/
+
 
 
 ## :hammer: Used technologies
@@ -33,58 +33,58 @@ https://infinitycinema.azurewebsites.net/
 ## Images
 #### • The application have modern and beautiful header and footer.
 #### • SignUp/SignIn Pages
-![2022-09-18 (29)](https://user-images.githubusercontent.com/88380154/190923172-b9b5002c-cbd3-43cf-96c5-e8adbc8f5601.png)
-![2022-09-18 (30)](https://user-images.githubusercontent.com/88380154/190923174-34f51b27-fa16-4fe0-a1f5-769ec9fc49f6.png)
+![RegisterViewModel](https://user-images.githubusercontent.com/89745007/206549203-aa939925-1b62-4382-8ec6-ea09b96c091c.png)
+![LoginViewPage](https://user-images.githubusercontent.com/89745007/206549239-eb25d06b-f782-4bc4-a8b7-7ee8de027c1f.png)
 
-#### • Home Page: Shows the three highest rated movies. If the user is not sign in show jumbotron with beautiful design and buttons for "Register" and "Login" to can access watchlist. If the user is sign in show area with his up to first five saved movie if have any.
-![2022-09-18 (2)](https://user-images.githubusercontent.com/88380154/190923103-8757266c-72b8-4331-91eb-fec9d614d2eb.png)
-![2022-09-18 (4)](https://user-images.githubusercontent.com/88380154/190923105-087bd394-d96d-4339-bb39-b2442ffb6d31.png)
-![2022-09-18 (27)](https://user-images.githubusercontent.com/88380154/190923167-41ca38ca-17f5-481b-baef-1dccd35c5618.png)
-![2022-09-18 (31)](https://user-images.githubusercontent.com/88380154/190924238-228a84ad-aaeb-41b0-925f-f4d2c698fe46.png)
-![2022-09-18 (22)](https://user-images.githubusercontent.com/88380154/190923157-a630e8c2-3b19-4944-80a1-2dc7c8ab0f75.png)
 
-#### • All Page
-![2022-09-18 (16)](https://user-images.githubusercontent.com/88380154/190923143-106efea7-8a22-451f-8ca9-70e37af56bf5.png)
-![2022-09-18 (17)](https://user-images.githubusercontent.com/88380154/190923144-fe740546-806f-4b6f-b425-2ac8e518faa7.png)
-![2022-09-18 (18)](https://user-images.githubusercontent.com/88380154/190923150-7696bd5d-6c8b-4aae-bd35-538fe5f78ba3.png)
-![2022-09-18 (19)](https://user-images.githubusercontent.com/88380154/190923153-ce9acd95-5d92-43ba-9b12-3a7f645174d9.png)
-![2022-09-18 (20)](https://user-images.githubusercontent.com/88380154/190923154-a6fa4216-928c-4ded-974d-9df8b484ac05.png)
 
-#### • All Movie in application have Details Page
-![2022-09-18 (10)](https://user-images.githubusercontent.com/88380154/190923122-f07261f9-f914-42c6-aa9b-e9c29082963f.png)
-![2022-09-18 (11)](https://user-images.githubusercontent.com/88380154/190923124-667250db-989f-4b83-a66c-c3ab8351524a.png)
-![2022-09-18 (12)](https://user-images.githubusercontent.com/88380154/190923134-886ad67b-f583-4e04-b944-05e9b9beb74f.png)
-![2022-09-18 (21)](https://user-images.githubusercontent.com/88380154/190923156-8153b4f4-596d-4bcd-baff-20e10f34f85b.png)
 
-#### • All Genres Page: Shows all available genres in application with small description.
-![2022-09-18 (23)](https://user-images.githubusercontent.com/88380154/190923161-b0427632-3054-4e80-8bd5-2df4600f2793.png)
-![2022-09-18 (25)](https://user-images.githubusercontent.com/88380154/190923163-b3d42bb3-0de9-45e9-966e-9fe118e58404.png)
 
-#### • Watchlist Page for users: Show all saved movies from particular user if have any.
-![2022-09-18 (26)](https://user-images.githubusercontent.com/88380154/190923166-afc65fa1-b406-48e5-a7c6-c8be0fdafa49.png)
-![2022-09-18 (28)](https://user-images.githubusercontent.com/88380154/190923168-388b4a5c-ee47-4f05-8247-d610cae3b5b2.png)
+#### • All Page :Shows the all the cameras in the shop.You have the option to search a camera by search bar or sort by 
+Model
+Year
+Brand And Model
 
-#### • If user have Admin role have access to admin area where can create, update and delete all entities in application. Also can delete movie and from "All" page.
-![2022-09-18 (13)](https://user-images.githubusercontent.com/88380154/190923137-6489c6f9-cad3-48a8-b4db-ee2c00429ddf.png)
-![2022-09-18 (14)](https://user-images.githubusercontent.com/88380154/190923138-91756c88-43a5-4e27-8bf4-f978bb40ac48.png)
-![2022-09-18 (5)](https://user-images.githubusercontent.com/88380154/190923107-ac094cf8-3577-4e8c-ae45-aa4cc842237e.png)
-![2022-09-18 (6)](https://user-images.githubusercontent.com/88380154/190923110-a8a81433-a8f0-48b6-9ddf-8c22f573edc7.png)
-![2022-09-18 (7)](https://user-images.githubusercontent.com/88380154/190923113-41f3ef23-f1aa-4641-ad66-b657a8d99b84.png)
-![2022-09-18 (8)](https://user-images.githubusercontent.com/88380154/190923118-3063ad5c-2d83-4359-a2e6-91687eb77c99.png)
+![AllPage](https://user-images.githubusercontent.com/89745007/206549451-ad607a13-6421-45f4-8d59-5e35dca08dac.png)
+![SearchBy](https://user-images.githubusercontent.com/89745007/206549706-f468a6af-6421-4b6f-9a7a-2a23aac17d77.png)
 
-#### • Forum System: For every category users can add posts, comments for posts and nested comments. User that create post can to delete it.
-![2022-09-18 (32)](https://user-images.githubusercontent.com/88380154/190926211-58a99c73-3100-433f-8f17-0d54078fd904.png)
-![2022-09-18 (33)](https://user-images.githubusercontent.com/88380154/190926219-e2eed8de-f4c1-4a4c-a846-56ee96a8ed50.png)
-![2022-09-18 (34)](https://user-images.githubusercontent.com/88380154/190926371-17311d18-51e0-4220-9635-81083a3a502f.png)
-![2022-09-18 (35)](https://user-images.githubusercontent.com/88380154/190926373-f3db309c-95ce-41a2-824c-697442f9ce24.png)
-![2022-09-18 (37)](https://user-images.githubusercontent.com/88380154/190926565-9d5e5809-d470-42b9-b3d0-87baf760edf5.png)
-![2022-09-18 (38)](https://user-images.githubusercontent.com/88380154/190926597-29d57620-d498-4c73-b31d-aceb3bbc01c1.png)
+
+#### • DetailsPage : Here you can see details for the current camera.
+![DetailsPage](https://user-images.githubusercontent.com/89745007/206549779-96b1bdd2-f852-4037-b29e-e42da0933576.png)
+
+
+#### • ReviewPage: Here you can share your opinion about the camera.Also, you can give stars from one to 5. 
+![AddReviewForTheGivenCamera](https://user-images.githubusercontent.com/89745007/206549987-21992c04-0956-4c1f-8ed6-f478accecc47.png)
+
+
+#### • CartPage : Shows all item in the Cart.
+![AddToCartPage](https://user-images.githubusercontent.com/89745007/206550401-eb92dd83-ee24-4b2e-b911-34181f4761f4.png)
+
+#### • SummaryPage: It summaries all thigs which have been in the cart.
+![SummaryPage](https://user-images.githubusercontent.com/89745007/206550737-5e1f283e-3eae-4b6a-8b76-8e493c5df35b.png)
+
+
+####![PlaceOrderPage](https://user-images.githubusercontent.com/89745007/206551472-95e0623d-f4b1-4c6a-b1e4-f8f6b4aaf800.png)
+ • PaymentPages: There you have to redeem your credit in oder to make purchase
+![OrderCompleted](https://user-images.githubusercontent.com/89745007/206551516-c5b5ef35-7e7c-44d7-adcf-13787054e49f.png)
+
+ • MyProfilePage: 
+![MyProfilePage](https://user-images.githubusercontent.com/89745007/206551952-880d18d5-3b21-4140-8a27-936c190628c4.png)
+![MyProfileEditPage](https://user-images.githubusercontent.com/89745007/206551959-f5122226-2a88-4dfb-b3a1-bdb2e725fb57.png)
+
+
+#### • If user have Admin role have access to admin area where can create, update and delete all entities in application. Also can delete cameras and from "All" page.
+![AdminPageAllUser](https://user-images.githubusercontent.com/89745007/206551837-d83d0799-878b-457f-828c-531d48ffc355.png)
+![CameraMangementAdminPage](https://user-images.githubusercontent.com/89745007/206551851-c1ddd270-d3b3-4667-82ff-45907c798d22.png)
+![EditUserAdminPage](https://user-images.githubusercontent.com/89745007/206551884-998949af-1de4-4ad1-9d40-e0a1b07019b5.png)
+
+
 
 
 ## Author
-[Radoslav Radev](https://github.com/calisthenicsGuy)
+Nikola Madzharov
 <br />
-[LinkedIn](https://www.linkedin.com/in/radoslav-radev-908a96235/)
+[LinkedIn](https://www.linkedin.com/in/nikola-madzharov-106b90236/)
 
 
 ## :v: Show your opinion
