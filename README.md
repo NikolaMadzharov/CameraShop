@@ -1,4 +1,4 @@
-# Infinity Cinema - ASP.NET Core Application
+# Camera Shop- ASP.NET Core Application  
 
 
 ## :pencil: Project Description
