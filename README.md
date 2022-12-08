@@ -2,7 +2,7 @@
 
 
 ## :pencil: Project Description
-Infinity Cinema is an application in which you can read a brief description, view a gallery of photos of the film as well as its trailer without registration and completely free of charge, in short, find out everything about your favorite films. The app offers all the conveniences to access more information and save a movie to watch later. I have also created a forum system where you can find interesting categories and through them create a post in the selected category and communicate with different people on topics of interest to you. I am sure you will use the application with real pleasure. Don't forget to share your favorite movies online. ✌
+CameraShop is an application where the cliens are able to buy cameras from the best shop in Bulgaria.Also,you can writte review on th current camera whether you like it or not!
 
 
 ## :floppy_disk: Database Diagram
