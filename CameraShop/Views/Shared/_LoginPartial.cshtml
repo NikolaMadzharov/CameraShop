@@ -13,9 +13,6 @@
             <a class="" asp-area="" asp-controller="Cart" asp-action="Index"><i class="bi bi-cart4"></i></a>
 
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark"  title="Manage">Hello @User.FindFirst("first_name").Value</a>
-        </li>
 
         <li class="nav-item">
             <form class="form-inline" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -32,8 +29,6 @@
                     <a class="nav-link active" asp-area="Admin" asp-controller="Camera" asp-action="Index" class="btn btn-danger">Camera Management</a>
 
                 }
-               
-
             </div>
         </li>
 

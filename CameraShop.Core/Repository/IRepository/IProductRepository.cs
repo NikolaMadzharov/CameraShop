@@ -1,4 +1,5 @@
-﻿using CameraShop.Core.Models.Home;
+﻿using CameraShop.Core.Models.Enum;
+using CameraShop.Core.Models.Home;
 using CameraShop.Core.Models.Product;
 using CameraShop.Core.Models.Review;
 using CameraShop.Infrastructure.Data.Models;
@@ -7,7 +8,7 @@ namespace CameraShop.Core.Repository.IRepository
 {
     public interface IProductRepository : IRepository<Camera>
     {
-        void Update(Camera product);
+        
 
         public Task<IEnumerable<CameraIndexViewModel>> GetCamerasAsync();
 
@@ -17,7 +18,7 @@ namespace CameraShop.Core.Repository.IRepository
         Task Delete(int id);
 
         public Task Add(AddCameraFromModel model);
-        
 
+        
     }
 }

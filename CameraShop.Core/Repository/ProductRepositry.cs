@@ -1,9 +1,11 @@
-﻿using CameraShop.Core.Models.Home;
+﻿using CameraShop.Core.Models.Enum;
+using CameraShop.Core.Models.Home;
 using CameraShop.Core.Models.Product;
 using CameraShop.Core.Repository.IRepository;
 using CameraShop.Infrastructure.Data;
 using CameraShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CameraShop.Core.Repository
 {
@@ -31,6 +33,8 @@ namespace CameraShop.Core.Repository
             await _data.AddAsync(cameraData);
             await _data.SaveChangesAsync();
         }
+
+     
 
         public async Task Delete(int id)
         {
@@ -80,24 +84,6 @@ namespace CameraShop.Core.Repository
             return allCameras;
         }
 
-        public void Update(Camera product)
-        {
-            var objFromDb = _data.Cameras.FirstOrDefault(s => s.Id == product.Id);
-            if (objFromDb != null)
-            {
-                if (product.ImageUrl != null)
-                {
-                    objFromDb.ImageUrl = product.ImageUrl;
-                }
-                objFromDb.Brand = product.Brand;
-                objFromDb.Price = product.Price;
-                objFromDb.Year = product.Year;
-                objFromDb.Model = product.Model;
-                objFromDb.Description = product.Description;
-                objFromDb.CategoryId = product.CategoryId;
-
-
-            }
-        }
+       
     }
 }

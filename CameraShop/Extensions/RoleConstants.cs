@@ -2,7 +2,6 @@
 {
     public static class RoleConstants
     {
-        public const string Seller = "Seller";
-        public const string Admin = "admin";
+        public const string Admin = "Admin";
     }
 }

@@ -158,5 +158,6 @@ namespace CameraShop.Tests.Camera
             Assert.AreEqual(1, result.Result.FirstOrDefault().Id);
 
         }
+     
     }
 }

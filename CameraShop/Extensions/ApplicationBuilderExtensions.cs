@@ -15,11 +15,11 @@
 
             data.Database.Migrate();
 
-            SeedProteinCategories(data);
+            SeedCategories(data);
 
             return app;
         }
-        private static void SeedProteinCategories(TechRentingDbContext data)
+        private static void SeedCategories(TechRentingDbContext data)
         {
             if (data.Categories.Any())
             {
@@ -35,5 +35,7 @@
 
             data.SaveChanges();
         }
+
+      
     }
 }

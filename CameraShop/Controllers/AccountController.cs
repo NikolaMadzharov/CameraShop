@@ -65,7 +65,7 @@ namespace TechRentingSystem.Controllers
 
             var result = await this.userManager.CreateAsync(user, model.Password);
 
-            await userManager.AddClaimAsync(user, new System.Security.Claims.Claim("first_name", user.FirstName));
+          
 
             if (result.Succeeded)
             {
@@ -136,7 +136,6 @@ namespace TechRentingSystem.Controllers
         public async Task<IActionResult> CreateRoles()
         {
         
-            await roleManager.CreateAsync(new IdentityRole(RoleConstants.Seller));
             await roleManager.CreateAsync(new IdentityRole(RoleConstants.Admin));
 
             return RedirectToAction("Index", "Home");

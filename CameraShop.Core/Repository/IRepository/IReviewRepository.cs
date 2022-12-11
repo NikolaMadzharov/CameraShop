@@ -9,7 +9,7 @@ namespace CameraShop.Core.Repository.IRepository
 
         Task DeleteReview(int id);
 
-        Task<EditReviewViewModel> GetReviewForEdit(int id);
+     
 
         Task Update(EditReviewViewModel model);
 

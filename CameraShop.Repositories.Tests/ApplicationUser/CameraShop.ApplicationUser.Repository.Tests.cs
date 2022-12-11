@@ -9,7 +9,7 @@ namespace CameraShop.Tests.ApplicationUser
     public class ApplicationUserRepositoryTests
     {
         [Test]
-        public async Task ShouldCreateUserById()
+        public async Task ShouldGetUserById()
         {
             var optionsBuilder = new DbContextOptionsBuilder<TechRentingDbContext>()
               .UseInMemoryDatabase(Guid.NewGuid().ToString());
@@ -18,7 +18,7 @@ namespace CameraShop.Tests.ApplicationUser
 
             var applicationUserService = new ApplicationUserRepository(dbContext);
 
-            var user = new 
+            var user = new CameraShop.Infrastructure.Data.Models.Account.ApplicationUser
             {
                 Id = "dasod8iaijoudaij9jiosd-1231",
                 FirstName = "Ivan",

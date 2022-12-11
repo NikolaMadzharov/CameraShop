@@ -67,29 +67,29 @@ namespace TechRentingSystem.Areas.Admin.Controllers
         }
 
       
-        public async Task<IActionResult> Edit()
-        {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //public async Task<IActionResult> Edit()
+        //{
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var model = await _unitOfWork.ApplicationUser.GetUserForEdit(userId);
+        //    var model = await _unitOfWork.ApplicationUser.GetUserForEdit(userId);
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
       
-        [HttpPost]
-        public async Task<IActionResult> Edit(UserEditViewModel model)
-        {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(UserEditViewModel model)
+        //{
+        //    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            model.Id = userId;
+        //    model.Id = userId;
 
 
 
-            await _unitOfWork.ApplicationUser.UpdateUser(model);
+        //    await _unitOfWork.ApplicationUser.UpdateUser(model);
 
-            return RedirectToAction("Index", "User");
-        }
+        //    return RedirectToAction("Index", "User");
+        //}
 
     }
 }

@@ -17,19 +17,9 @@ namespace CameraShop.Core.Repository
 
         public async Task AddReview(AddReviewViewModel model)
         {
-            var user = await _data.Users.FirstOrDefaultAsync(x => x.Id == model.ApplicationUserId);
+           
 
-            if (user == null)
-            {
-                throw new Exception();
-            }
-
-            var course = await _data.Cameras.FirstOrDefaultAsync(x => x.Id == model.CameraId);
-
-            if (course == null)
-            {
-                throw new Exception();
-            }
+          
 
             var review = new Review()
             {
@@ -67,10 +57,7 @@ namespace CameraShop.Core.Repository
             return allReviews;
         }
 
-        public Task<EditReviewViewModel> GetReviewForEdit(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task Update(EditReviewViewModel model)
         {

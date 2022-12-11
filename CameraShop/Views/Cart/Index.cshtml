@@ -77,29 +77,7 @@
                             </div>
 
                         </div>
-@*                    <div class="card-footer">
-                        <div class="card-footer row">
-                            @if (!Model.OrderHeader.ApplicationUser.EmailConfirmed
-                           && Model.OrderHeader.ApplicationUser.CompanyId != null
-                           && Model.OrderHeader.ApplicationUser.Company.IsAuthorizedCompany)
-                            {
-                                <div class="col-8 text-danger">
-                                    Email Must be confirmed for authorized customers!
-                                </div>
-                                <div class="col-4">
-                                    <button type="submit" class="btn btn-outline-warning btn-sm">
-                                        Click here to resend confirmation Email!
-                                    </button>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-sm-12 col-lg-4 col-md-6 offset-lg-8 offset-md-6 ">
 
-                                    <a asp-area="Customer" asp-controller="Cart" asp-action="Summary" class="btn btn-success form-control">Summary</a>
-                                </div>
-                            }
-                        </div>*@
                     </div>
                 </div>
             </div>
