@@ -17,14 +17,9 @@ CameraShop is an application where the cliens are able to buy cameras from the b
 * [ASP.NET Core 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * [ASP.NET Core Areas](https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/areas?view=aspnetcore-6.0)
 * [Entity Framework Core 6.0](https://learn.microsoft.com/en-us/ef/core/)
-* [SendGrid](https://github.com/sendgrid)
 * [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
-* [TinyMCE](https://github.com/tinymce/)
 * [Bootstrap](https://github.com/twbs/bootstrap)
 * [Bootstrap Lazy Kit](https://bootstrapbay.github.io/lazy-kit/)
-* [Moment.js](https://www.nuget.org/packages/Moment.js/ "Moment.js")
-* AJAX
-* [jQuery](https://github.com/jquery/jquery)
 * JavaScript
 * [xUnit](https://github.com/xunit/xunit)
 * [In-Memory Database](https://learn.microsoft.com/en-us/sql/relational-databases/in-memory-database?view=sql-server-ver16)
