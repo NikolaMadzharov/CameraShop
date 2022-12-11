@@ -23,7 +23,8 @@ CameraShop is an application where the cliens are able to buy cameras from the b
 * JavaScript
 * [xUnit](https://github.com/xunit/xunit)
 * [In-Memory Database](https://learn.microsoft.com/en-us/sql/relational-databases/in-memory-database?view=sql-server-ver16)
-
+* HTML & CSS
+* SOLID  PRINCIPLES AND MVC DESIGN PATTERN
 
 ## Images
 #### • The application have modern and beautiful header and footer.
