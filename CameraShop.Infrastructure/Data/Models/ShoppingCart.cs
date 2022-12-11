@@ -23,7 +23,7 @@ namespace CameraShop.Infrastructure.Data.Models
         public ApplicationUser ApplicationUser { get; set; }
 
         [NotMapped]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
        
 

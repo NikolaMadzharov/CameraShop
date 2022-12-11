@@ -44,7 +44,7 @@ namespace TechRentingSystem.Controllers
             foreach (var cart in shoppingCartVM.ListCart)
             {
                 cart.Price = GetPriceBasedOnQuantity(cart.Count, cart.Camera.Price);
-                shoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+                shoppingCartVM.OrderHeader.OrderTotal = (cart.Price * cart.Count);
 
             }
             return View(shoppingCartVM);
@@ -99,7 +99,7 @@ namespace TechRentingSystem.Controllers
             foreach (var cart in shoppingCartVM.ListCart)
             {
                 cart.Price = GetPriceBasedOnQuantity(cart.Count, cart.Camera.Price);
-                shoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+                shoppingCartVM.OrderHeader.OrderTotal = cart.Price * cart.Count;
             }
 
             _unitOfWork.OrderHeader.Add(shoppingCartVM.OrderHeader);
@@ -223,7 +223,7 @@ namespace TechRentingSystem.Controllers
         }
 
 
-        private double GetPriceBasedOnQuantity(double quantity, double price)
+        private decimal GetPriceBasedOnQuantity(decimal quantity, decimal price)
         {
             return price;
         }

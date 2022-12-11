@@ -20,7 +20,7 @@ namespace CameraShop.Infrastructure.Data.Models
 
 
         [Required]
-        public double OrderTotal { get; set; }
+        public decimal OrderTotal { get; set; }
 
         public string? OrderStatus { get; set; }
         public string? PaymentStatus { get; set; }

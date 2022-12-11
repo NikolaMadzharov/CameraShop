@@ -12,7 +12,7 @@
         public string Model { get; set; }
         [Required]
         [Range(0,100000)]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         [Required]
         [Url]
         [Display(Name = "ImageUr")]
