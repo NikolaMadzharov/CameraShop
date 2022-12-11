@@ -11,12 +11,14 @@
         [Required]
         public string Model { get; set; }
         [Required]
+        [Range(0,100000)]
         public double Price { get; set; }
         [Required]
         [Url]
         [Display(Name = "ImageUr")]
         public string ImageUrl { get; set; }
         [Required]
+        [Range(2010,2022)]
         public int Year { get; set; }
         [Required]
         public string Description { get; set; }
